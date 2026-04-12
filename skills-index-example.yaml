@@ -1,0 +1,480 @@
+version: "1.0"
+repository: "github.com/adrianotomasoni/adriano-skills"
+lastUpdated: "2026-04-12T00:00:00Z"
+author: "Adriano Tomasoni"
+
+categories:
+  
+  # =========================================================================
+  # TRADERISK SKILLS - Operação core
+  # =========================================================================
+  
+  - id: "traderisk"
+    name: "TradeRisk"
+    description: "Skills específicas para TradeRisk Capital & Insurance - operação, design, análise"
+    color: "#EF4444"
+    
+    skills:
+      
+      # Frontend Design
+      - id: "traderisk-frontend-design"
+        name: "TradeRisk Frontend Design"
+        category: "ui/design"
+        path: "traderisk/frontend-design"
+        priority: "critical"
+        
+        description: |
+          Criar e revisar interfaces production-grade para produtos TradeRisk.
+          Stack: React 18 + TypeScript + Tailwind + shadcn/ui
+          Aplica brand system e design patterns específicos.
+        
+        triggers:
+          - "cria um componente"
+          - "monta esse layout"
+          - "faz um design pra"
+          - "React component"
+          - "revisa o UI"
+          - "interface"
+          - "página"
+          - "form"
+          - "dashboard"
+        
+        tags:
+          - "ui"
+          - "react"
+          - "design"
+          - "frontend"
+          - "traderisk"
+        
+        models: ["claude-sonnet-4", "claude-opus-4"]
+        minTokens: 2000
+        
+        applications:
+          - "portal-do-tomador" # Portal Licitação Protegida
+          - "traderisk360" # TradeRisk360 Global
+          - "riskinsert-pro" # RiskInspect Pro
+          - "crm-traderisk" # CRM segurodecredito.lovable.app
+          - "licitaradar" # LicitaRadar module
+        
+        examples:
+          - "Criar formulário de proposta de garantia judicial"
+          - "Revisar componente de autenticação do portal"
+          - "Design de dashboard de monitoramento de processos"
+          - "Montar página de pricing para Seguro de Crédito"
+      
+      
+      # Credit Risk Analysis
+      - id: "credit-risk-analysis"
+        name: "Análise de Risco de Crédito"
+        category: "financial/risk"
+        path: "traderisk/credit-risk-analysis"
+        priority: "high"
+        
+        description: |
+          Análise de risco de crédito comercial B2B.
+          Pergunta central: "Essa empresa vai me pagar no prazo?"
+          Usa framework Coface + TradeRisk360 + Serasa.
+        
+        triggers:
+          - "análise de crédito"
+          - "limite de crédito"
+          - "venda a prazo"
+          - "balanço do cliente"
+          - "balancete"
+          - "DF consolidada"
+          - "grupo econômico"
+          - "Serasa"
+          - "Coface"
+          - "parecer de crédito"
+          - "inadimplência"
+          - "risco comercial"
+          - "exposição"
+          - "score"
+          - "rating"
+        
+        tags:
+          - "credit"
+          - "risk"
+          - "financial"
+          - "b2b"
+          - "insurance"
+          - "underwriting"
+        
+        models: ["claude-sonnet-4", "claude-opus-4"]
+        minTokens: 1500
+        
+        dataRequirements:
+          - "DF (Demonstração Financeira)"
+          - "Serasa pontualidade"
+          - "CNPJ / dados cadastrais"
+          - "Grupo econômico"
+          - "Setor / atividade"
+          - "Histórico de pagamentos"
+        
+        outputFormats:
+          - "Risk Letter (A-F)"
+          - "JSON estruturado"
+          - "Parecer executivo"
+          - "Tabela de indicadores"
+        
+        examples:
+          - "Validar crédito de vendedor brasileiro"
+          - "Análise de Coface para importadora"
+          - "Assessor de limite pra grupo exportador"
+      
+      
+      # SEO Auditoria
+      - id: "seo-auditoria-traderisk"
+        name: "Auditoria SEO TradeRisk"
+        category: "marketing/seo"
+        path: "traderisk/seo-auditoria"
+        priority: "medium"
+        
+        description: |
+          Auditoria de SEO em tempo real para traderisk.com.br e domínios relacionados.
+          Análise de ranking, snippets, gaps vs competidores.
+        
+        triggers:
+          - "analisar SEO"
+          - "como estamos no Google"
+          - "ranking caiu"
+          - "perdendo posições"
+          - "SEO"
+          - "posicionamento"
+          - "keywords"
+          - "snippet"
+          - "indexado"
+          - "posição"
+          - "velocidade"
+          - "mobile"
+        
+        tags:
+          - "seo"
+          - "marketing"
+          - "analytics"
+          - "growth"
+        
+        models: ["claude-haiku-4", "claude-sonnet-4"]
+        minTokens: 1000
+        
+        targetDomains:
+          - "traderisk.com.br"
+          - "licitacaoprotegida.com.br"
+          - "onetowerseguros.com.br"
+          - "leiloeiroprotegido.com.br"
+        
+        targetPages:
+          - "/garantia-judicial"
+          - "/seguro-garantia"
+          - "/seguro-credito"
+          - "/seguro-credito-exportacao"
+          - "/deposito-recursal-trabalhista"
+          - "/garantia-leiloeiro"
+        
+        competitors:
+          - "pottencial.com.br"
+          - "sombrero.com.br"
+          - "ezze.com.br"
+          - "junto.com.br"
+        
+        outputFormats:
+          - "Markdown report com tabelas"
+          - "JSON de posições"
+          - "Recomendações priorizadas"
+      
+      
+      # Content Writer
+      - id: "traderisk-content-writer"
+        name: "TradeRisk Content Writer"
+        category: "content/marketing"
+        path: "traderisk/content-writer"
+        priority: "medium"
+        
+        description: |
+          Conteúdo técnico, estratégico e comercial para TradeRisk.
+          Foco: Seguro de Crédito, Garantia Judicial, Risco Setorial, Geopolítica.
+        
+        triggers:
+          - "escreve"
+          - "redige"
+          - "conteúdo"
+          - "artigo"
+          - "copy"
+          - "texto"
+          - "proposta"
+          - "descrição"
+          - "blog"
+          - "newsletter"
+          - "case study"
+        
+        tags:
+          - "content"
+          - "marketing"
+          - "writing"
+          - "strategy"
+        
+        models: ["claude-sonnet-4", "claude-opus-4"]
+        minTokens: 1500
+        
+        topics:
+          - "Seguro de Crédito Inadimplência B2B"
+          - "Recuperação Judicial"
+          - "Risco Setorial"
+          - "Risco País"
+          - "Conflitos Geopolíticos"
+          - "Gestão de Risco Comercial"
+          - "Proteção de Recebíveis"
+        
+        outputFormats:
+          - "Blog post (1500-2500 words)"
+          - "Social media variants"
+          - "Email newsletter"
+          - "Whitepaper / insight"
+          - "Product copy"
+        
+        examples:
+          - "Artigo: Por que Seguro de Crédito agora?"
+          - "Case study: Exportador XYZ"
+          - "Newsletter de risco país"
+  
+  # =========================================================================
+  # GENERAL SKILLS - Reutilizáveis
+  # =========================================================================
+  
+  - id: "general"
+    name: "General"
+    description: "Skills genéricas, reutilizáveis em qualquer contexto"
+    color: "#3B82F6"
+    
+    skills:
+      
+      # Code Review
+      - id: "code-review-checklist"
+        name: "Code Review Estruturado"
+        category: "engineering"
+        path: "general/code-review"
+        priority: "high"
+        
+        description: |
+          Code review consistente e construtivo com checklist estruturado.
+          Avalia: correctness, readability, performance, security, testability, maintainability.
+        
+        triggers:
+          - "revisa"
+          - "code review"
+          - "está bom?"
+          - "melhora"
+          - "validar código"
+          - "lint"
+          - "audit"
+        
+        tags:
+          - "engineering"
+          - "quality"
+          - "best-practices"
+        
+        models: ["claude-sonnet-4"]
+        minTokens: 1000
+        
+        checklistCategories:
+          - "Correctness"
+          - "Readability"
+          - "Performance"
+          - "Security"
+          - "Testability"
+          - "Maintainability"
+        
+        outputFormat: "Score (A-F) + Top 3 Issues + Quick Wins + Detailed Feedback"
+      
+      
+      # API Design
+      - id: "design-api-restful"
+        name: "Design de API RESTful"
+        category: "architecture"
+        path: "general/api-design"
+        priority: "medium"
+        
+        description: |
+          Design de API RESTful seguindo boas práticas.
+          Nomenclatura consistente, versionamento, tratamento de erros, paginação, autenticação.
+        
+        triggers:
+          - "API"
+          - "endpoint"
+          - "REST"
+          - "design de API"
+          - "rotas"
+          - "integração"
+        
+        tags:
+          - "architecture"
+          - "backend"
+          - "api"
+        
+        models: ["claude-sonnet-4"]
+        minTokens: 1000
+      
+      
+      # Doc Coauthoring
+      - id: "doc-coauthoring"
+        name: "Doc Coauthoring"
+        category: "documentation"
+        path: "general/doc-coauthoring"
+        priority: "medium"
+        
+        description: |
+          Workflow estruturado para co-autoria de documentação.
+          Documentação, propostas, technical specs, decision docs.
+        
+        triggers:
+          - "escreve documentação"
+          - "proposta"
+          - "spec técnica"
+          - "decision doc"
+          - "documente"
+        
+        tags:
+          - "documentation"
+          - "process"
+        
+        models: ["claude-sonnet-4"]
+        minTokens: 1500
+  
+  # =========================================================================
+  # EXPERIMENTAL - WIP / Protótipos
+  # =========================================================================
+  
+  - id: "experimental"
+    name: "Experimental"
+    description: "Trabalho em progresso, protótipos e idéias em teste"
+    color: "#A78BFA"
+    status: "draft"
+    
+    skills:
+      
+      # Judicial Classifier V4
+      - id: "judicial-classifier-v4"
+        name: "Classificador Judicial V4"
+        category: "ml/classification"
+        path: "experimental/judicial-classifier-v4"
+        status: "draft"
+        priority: "high"
+        
+        description: |
+          Event-based judicial process classification.
+          V3 spec: 11 phases, 13 guarantee events, scoring formulas.
+          Incorpora MELHORIAS_MOTOR_JUDICIAL_2026-03.md.
+        
+        triggers:
+          - "classificar processo"
+          - "judicial"
+          - "evento"
+          - "oportunidade"
+          - "classifier"
+        
+        tags:
+          - "ml"
+          - "classification"
+          - "judicial"
+          - "traderisk"
+        
+        models: ["claude-sonnet-4"]
+        minTokens: 2000
+        
+        status: "alpha"
+        nextMilestones:
+          - "Unified Fase 1 v4 prompt"
+          - "Supabase schema integration"
+          - "Performance benchmarking"
+      
+      
+      # LicitaRadar Setup
+      - id: "licitaradar-setup"
+        name: "LicitaRadar Setup Guide"
+        category: "implementation"
+        path: "experimental/licitaradar-setup"
+        status: "draft"
+        
+        description: |
+          Setup guide para LicitaRadar - módulo de monitoramento de licitações públicas.
+          PNCP API, Claude Haiku 4.5, Brevo alerts.
+        
+        triggers:
+          - "LicitaRadar"
+          - "licitação"
+          - "PNCP"
+          - "monitoramento"
+          - "radar"
+        
+        tags:
+          - "implementation"
+          - "licitacao"
+          - "module"
+        
+        models: ["claude-haiku-4"]
+        minTokens: 1000
+        
+        nextMilestones:
+          - "API integration complete"
+          - "Alert system live"
+          - "Dashboard MVP"
+
+# =========================================================================
+# METADATA
+# =========================================================================
+
+metadata:
+  totalSkills: 10
+  totalCategories: 3
+  lastUpdated: "2026-04-12T00:00:00Z"
+  
+  stacks:
+    frontend:
+      - "React 18"
+      - "TypeScript"
+      - "Vite"
+      - "Tailwind CSS"
+      - "shadcn/ui"
+    
+    backend:
+      - "Supabase"
+      - "Edge Functions"
+      - "TypeScript"
+    
+    tools:
+      - "Cursor"
+      - "Claude Code"
+      - "Lovable"
+      - "Vercel"
+      - "GitHub"
+  
+  integrations:
+    - "GitHub API"
+    - "Google Rich Results"
+    - "Coface API"
+    - "Serasa"
+    - "PNCP API"
+    - "Claude API"
+    - "Brevo API"
+  
+  environments:
+    - "Claude (claude.ai)"
+    - "Cursor (VS Code)"
+    - "Claude Code (CLI)"
+    - "Manus (Custom Framework)"
+
+# =========================================================================
+# MAINTENANCE
+# =========================================================================
+
+maintenance:
+  schedule: "Monthly"
+  lastAudit: "2026-04-12"
+  nextAudit: "2026-05-12"
+  
+  rulesForUpdate:
+    - "Each SKILL.md must have description + triggers + context"
+    - "Triggers should be 3-5 keywords minimum"
+    - "Examples must be realistic"
+    - "Sync to GitHub on every update"
+    - "Tag release on major skill additions"

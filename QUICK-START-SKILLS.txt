@@ -1,0 +1,222 @@
+╔═════════════════════════════════════════════════════════════════════════════╗
+║                    🚀 QUICK START: ENCONTRAR SKILLS                        ║
+║                                                                             ║
+║              Escolha o caminho mais rápido para seu caso de uso            ║
+╚═════════════════════════════════════════════════════════════════════════════╝
+
+
+═════════════════════════════════════════════════════════════════════════════
+🟢 CAMINHO 1: PROMPTS PRONTOS (Mais Rápido - 15 minutos)
+═════════════════════════════════════════════════════════════════════════════
+
+Quando usar: Você quer um prompt bom, não precisa de código complexo
+
+1️⃣ Abra → https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+   (Vá em "Prompt Library")
+
+2️⃣ Ou → https://smith.langchain.com/hub
+   (Procure por seu caso: "financial", "legal", "risk", etc)
+
+3️⃣ Copie o prompt, adapte para seu contexto
+
+✅ Exemplos prontos:
+   - Análise de documentos financeiros
+   - Extração de dados de PDF
+   - Classificação de textos
+   - Resumização de conteúdo
+
+⏱️ Tempo: 15-30 minutos
+📊 Qualidade: 8/10 (oficial Anthropic/OpenAI)
+💰 Custo: Grátis
+
+═════════════════════════════════════════════════════════════════════════════
+🟡 CAMINHO 2: REPOSITÓRIOS GITHUB (Balanceado - 1-2 horas)
+═════════════════════════════════════════════════════════════════════════════
+
+Quando usar: Você quer prompts + código + exemplos funcionando
+
+1️⃣ Escolha seu caso de uso:
+
+   CRÉDITO & SEGUROS:
+   → https://github.com/search?q=credit+analysis+language:python+stars:%3E50
+
+   LEGAL & DOCUMENTOS:
+   → https://github.com/search?q=document+classification+claude+language:python
+
+   DASHBOARDS & UI:
+   → https://github.com/shadcn-ui/ui
+   → https://github.com/recharts/recharts
+
+   LICITAÇÕES:
+   → https://github.com/search?q=procurement+language:python
+
+2️⃣ Avalie (use o checklist do arquivo "onde-encontrar-skills.md"):
+   ✓ Stars > 100?
+   ✓ Atualizações recentes?
+   ✓ README claro?
+   ✓ Licença ok (MIT/Apache)?
+
+3️⃣ Clone → Copie → Adapte → Integre
+
+✅ Melhores repos:
+   - github.com/openai/openai-cookbook (⭐ 28k+)
+   - github.com/anthropics/anthropic-examples (⭐ oficial)
+   - github.com/shadcn-ui/ui (⭐ 70k+)
+   - github.com/langchain-ai/langchain (⭐ 90k+)
+
+⏱️ Tempo: 1-2 horas
+📊 Qualidade: 9/10 (testado em produção)
+💰 Custo: Grátis (open source)
+
+═════════════════════════════════════════════════════════════════════════════
+🔴 CAMINHO 3: PROMPTS PAGOS (Premium - 1 hora)
+═════════════════════════════════════════════════════════════════════════════
+
+Quando usar: Você quer prompts prontos + suporte + garantia de qualidade
+
+1️⃣ Abra → https://www.promptbase.com
+
+2️⃣ Procure por seu case (ex: "credit analysis", "financial risk")
+
+3️⃣ Leia as reviews e compre (US$2-50 por prompt)
+
+4️⃣ Use direto ou adapte
+
+✅ Vantagens:
+   - Custurizados por especialistas
+   - Reviews reais de usuários
+   - Pronto pra usar
+   - Suporte (geralmente)
+
+⏱️ Tempo: 1 hora
+📊 Qualidade: 8/10 (depende do vendedor)
+💰 Custo: US$2-50 por prompt
+
+
+═════════════════════════════════════════════════════════════════════════════
+🎯 RECOMENDAÇÃO POR TIPO DE SKILL
+═════════════════════════════════════════════════════════════════════════════
+
+├─ Análise de Crédito
+│  └─ Start: OpenAI Cookbook + Anthropic Docs
+│     → github.com/openai/openai-cookbook
+│     → docs.anthropic.com (financial examples)
+│
+├─ Processamento Legal/Documentos
+│  └─ Start: Anthropic Examples
+│     → github.com/anthropics/anthropic-examples
+│     (procure por "document_parsing")
+│
+├─ Dashboards & UI
+│  └─ Start: shadcn/ui + Tremor
+│     → github.com/shadcn-ui/ui
+│     → github.com/tremorlabs/tremor
+│
+├─ Licitações/Procurement
+│  └─ Start: GitHub Search + LangChain Hub
+│     → github.com/search?q=procurement+ai
+│     → smith.langchain.com/hub
+│
+├─ Monitoramento em Tempo Real
+│  └─ Start: Apify + GitHub
+│     → github.com/apify/apify-examples
+│     → github.com/langchain-ai/langchain (monitoring)
+│
+└─ Content & SEO
+   └─ Start: Awesome Prompts
+      → github.com/f/awesome-chatgpt-prompts
+
+
+═════════════════════════════════════════════════════════════════════════════
+⚡ ATALHOS PRA COMEÇAR AGORA
+═════════════════════════════════════════════════════════════════════════════
+
+Copie e cole no navegador (ou clique):
+
+📊 Análise Financeira
+   https://github.com/openai/openai-cookbook/blob/main/examples/financial_analysis_using_embeddings.ipynb
+
+📝 Processamento de Documentos
+   https://github.com/anthropics/anthropic-examples
+
+🎨 Componentes React
+   https://github.com/shadcn-ui/ui
+
+💼 Prompts Compartilhadas
+   https://smith.langchain.com/hub
+
+📖 Docs Anthropic
+   https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+
+🔎 Busca GitHub (Template)
+   https://github.com/search?q=YOUR_KEYWORD+language:python+stars:%3E100
+
+
+═════════════════════════════════════════════════════════════════════════════
+✅ CHECKLIST: Quando encontrar uma skill
+═════════════════════════════════════════════════════════════════════════════
+
+Qualidade
+  ☐ Mais de 100 stars?
+  ☐ Último commit < 3 meses atrás?
+  ☐ README completo?
+
+Compatibilidade
+  ☐ Funciona com Claude/GPT? (ou adaptável)
+  ☐ Linguagem matches seu stack?
+  ☐ Dependências claras?
+
+Reutilização
+  ☐ Código modular?
+  ☐ Prompts separados de código?
+  ☐ Licença MIT/Apache? (não proprietary)
+  ☐ Customizável para seu caso?
+
+
+═════════════════════════════════════════════════════════════════════════════
+📚 ARQUIVOS NESSA PASTA (use em ordem)
+═════════════════════════════════════════════════════════════════════════════
+
+1. QUICK-START-SKILLS.txt (este arquivo)
+   → Visão geral + atalhos rápidos
+
+2. onde-encontrar-skills.md
+   → Guia detalhado de todas as fontes
+   → Casos de uso específicos
+
+3. skills-resources-links.txt
+   → Lista completa de links diretos
+   → Organize nos bookmarks
+
+4. exemplo-buscar-adaptar-skill.md
+   → Tutorial passo-a-passo real
+   → Como avaliar, clonar e integrar
+
+
+═════════════════════════════════════════════════════════════════════════════
+🚀 PRÓXIMOS PASSOS
+═════════════════════════════════════════════════════════════════════════════
+
+1. Escolha uma skill que precisa
+2. Use um dos 3 caminhos acima
+3. Siga o checklist de qualidade
+4. Use o exemplo do arquivo #4 pra adaptar
+5. Integre no seu repositório (adriano-skills)
+6. Sincronize (Cursor + Claude + Manus)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+💡 Dica Final:
+   Comece com OpenAI Cookbook + Anthropic Docs
+   90% do que você precisa está lá, grátis
+
+   Bookmarque esses 3:
+   1. docs.anthropic.com
+   2. github.com/search
+   3. smith.langchain.com/hub
+
+═════════════════════════════════════════════════════════════════════════════
+
+Última atualização: 2026-04-12
+Versão: 1.0

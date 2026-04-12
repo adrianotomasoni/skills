@@ -1,0 +1,244 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    SKILLS & PROMPTS - LINKS DIRETOS                       ║
+║                     (Copie e abra no navegador)                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 DOCUMENTAÇÕES OFICIAIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Anthropic
+  Prompt Engineering Guide
+  → https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+
+  Examples & Templates
+  → https://github.com/anthropics/anthropic-examples
+
+  Claude API Docs
+  → https://docs.anthropic.com/en/docs
+
+OpenAI
+  API Documentation
+  → https://platform.openai.com/docs
+
+  OpenAI Cookbook
+  → https://github.com/openai/openai-cookbook
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 REPOSITÓRIOS TOP (GitHub)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Awesome Prompts & Prompt Engineering
+  Awesome ChatGPT Prompts
+  → https://github.com/f/awesome-chatgpt-prompts
+
+  Awesome Prompt Engineering
+  → https://github.com/dair-ai/Prompt-Engineering-Guide
+
+  Prompt Engineering Resources
+  → https://github.com/1712480447/awesome-prompt-engineering
+
+  Kunal's Awesome Prompts
+  → https://github.com/kunal-kushwaha/awesome-prompt-engineering
+
+LangChain & LlamaIndex
+  LangChain Repository
+  → https://github.com/langchain-ai/langchain
+
+  LangChain Hub (Prompts Compartilhadas)
+  → https://smith.langchain.com/hub
+
+  LlamaIndex
+  → https://github.com/jerryjliu/llama_index
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 PARA FINTECH / SEGUROS / CRÉDITO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Financial Analysis
+  AI for Business (Financial Prompts)
+  → https://github.com/AI-for-Business/financial-analysis-prompts
+
+  OpenAI Cookbook - Financial Analysis
+  → https://github.com/openai/openai-cookbook/blob/main/examples/financial_analysis_using_embeddings.ipynb
+
+  Trading Bot Prompts
+  → https://github.com/dkn0wd/trading-bot-prompts
+
+  Financial GPT Prompts
+  → https://github.com/timothybrooks/financial-gpt-prompts
+
+Insurance & Risk
+  Insurance Claims Processing
+  → https://github.com/anthropics/anthropic-examples
+  (procure por "insurance")
+
+  Risk Assessment Framework
+  → https://github.com/dkn0wd/risk-assessment-prompts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚖️ PARA PROCESSAMENTO LEGAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Legal Document Automation
+  → https://github.com/ccampbell/legal-document-automation
+
+  Legal AI Prompts
+  → https://github.com/slyturyx/legal-ai-prompts
+
+  LawGPT Prompts
+  → https://github.com/nadir-ai/lawgpt-prompts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PARA LICITAÇÕES / PROCUREMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Public Procurement Analysis (Brasil)
+  → https://github.com/brazilian-dev/procurement-ai
+
+  Procurement AI Tools
+  → https://github.com/public-procurement-analysis/ai-tools
+
+  Apify (Web Scraping)
+  → https://github.com/apify/apify-examples
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 PARA FRONTEND / COMPONENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+React Components
+  shadcn/ui (Componentes + Tailwind)
+  → https://github.com/shadcn-ui/ui
+
+  Tremor (Dashboards Financeiros)
+  → https://github.com/tremorlabs/tremor
+
+  Recharts (Charting)
+  → https://github.com/recharts/recharts
+
+Design Systems & Patterns
+  Next.js Examples
+  → https://github.com/vercel/next.js/tree/canary/examples
+
+  React Hook Form
+  → https://github.com/react-hook-form/react-hook-form
+
+  SWR (Data Fetching)
+  → https://github.com/vercel/swr
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 PARA CONTENT / MARKETING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Content Generation Prompts
+  → https://github.com/f/awesome-chatgpt-prompts (seção "writing")
+
+  Innovative Prompts
+  → https://github.com/aishwaryanr/innovative-prompts
+
+  SEO & Content AI
+  → https://github.com/kevinlu1248/ChatGLM-Tuning (generative prompts)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ FERRAMENTAS & PLATAFORMAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PromptBase (Marketplace)
+  → https://www.promptbase.com
+
+HuggingFace Spaces (Demos & Models)
+  → https://huggingface.co/spaces
+
+Cursor Rules Hub (Compartilhadas)
+  → https://cursor.directory
+
+Replit (Exemplos Executáveis)
+  → https://replit.com/@explore
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 COMUNIDADES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Discord Communities
+  Anthropic Official Discord
+  → https://discord.gg/anthropic
+
+  OpenAI Community
+  → https://community.openai.com
+
+Reddit
+  r/ClaudeAI
+  → https://reddit.com/r/ClaudeAI
+
+  r/PromptEngineering
+  → https://reddit.com/r/PromptEngineering
+
+  r/OpenAI
+  → https://reddit.com/r/OpenAI
+
+Indie Hackers
+  → https://www.indiehackers.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔍 BUSCAS AVANÇADAS NO GITHUB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Análise de Crédito
+  → https://github.com/search?q=credit+analysis+language:python+stars:%3E50
+
+  → https://github.com/search?q=credit+risk+gpt+language:python
+
+Financial Analysis
+  → https://github.com/search?q=financial+analysis+prompt+language:python+stars:%3E100
+
+  → https://github.com/search?q=trading+bot+strategy+language:python
+
+Processamento de Documentos
+  → https://github.com/search?q=document+classification+claude+language:python
+
+  → https://github.com/search?q=pdf+extraction+langchain+language:python
+
+Dashboards & Monitoring
+  → https://github.com/search?q=dashboard+react+typescript+stars:%3E500
+
+  → https://github.com/search?q=monitoring+system+alert+language:python
+
+Licitações
+  → https://github.com/search?q=procurement+ai+language:python
+
+  → https://github.com/search?q=bid+evaluation+language:python
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ MEUS FAVORITOS PARA TRADERISK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🟢 Start Here (Começa com esses):
+  1. OpenAI Cookbook
+     → https://github.com/openai/openai-cookbook
+
+  2. shadcn/ui (para componentes)
+     → https://github.com/shadcn-ui/ui
+
+  3. Anthropic Examples
+     → https://github.com/anthropics/anthropic-examples
+
+🟡 Aprofunde com esses:
+  4. LangChain Hub
+     → https://smith.langchain.com/hub
+
+  5. Anthropic Docs - Prompt Library
+     → https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+
+  6. Tremor (Dashboards)
+     → https://github.com/tremorlabs/tremor
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 TIP: Bookmarque esses 3 para acesso rápido:
+   1. docs.anthropic.com (documentação)
+   2. github.com/search (busca avançada)
+   3. smith.langchain.com/hub (prompts prontos)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Última atualização: 2026-04-12

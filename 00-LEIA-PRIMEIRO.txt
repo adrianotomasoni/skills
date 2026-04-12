@@ -1,0 +1,250 @@
+╔═════════════════════════════════════════════════════════════════════════════╗
+║                                                                             ║
+║                  🚀 ONDE ENCONTRAR SKILLS - GUIA COMPLETO                  ║
+║                                                                             ║
+║               Sua resposta: "Onde eu consigo pesquisar skills?"            ║
+║                                                                             ║
+╚═════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 VOCÊ RECEBEU 5 ARQUIVOS. LEIA NESTA ORDEM:
+═════════════════════════════════════════════════════════════════════════════
+
+1️⃣  QUICK-START-SKILLS.txt (Este, ler primeiro)
+    → Visão geral dos 3 caminhos principais
+    → Tempo: 5 minutos
+
+2️⃣  onde-encontrar-skills.md
+    → Guia COMPLETO com todas as fontes
+    → Casos de uso específicos TradeRisk
+    → Tempo: 15 minutos (skim), 30 minutos (leitura completa)
+
+3️⃣  skills-resources-links.txt
+    → Lista limpa de TODOS os links
+    → Organize nos seus bookmarks
+    → Tempo: 5 minutos
+
+4️⃣  SKILLS-POR-PROJETO.md
+    → Mapeamento exato para SEUS projetos
+    → Qual repositório para qual projeto
+    → Tempo: 10 minutos
+
+5️⃣  exemplo-buscar-adaptar-skill.md
+    → Tutorial passo-a-passo REAL
+    → Veja exatamente como fazer
+    → Tempo: 20 minutos (skim), 1 hora (fazer junto)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+⚡ RESUMO SUPER RÁPIDO (2 MINUTOS)
+═════════════════════════════════════════════════════════════════════════════
+
+Pergunta: "Onde encontro skills para meus projetos?"
+
+Resposta: **3 Fontes Principais:**
+
+🟢 CAMINHO 1: Prompts Prontos (15 minutos)
+   → docs.anthropic.com (Prompt Library)
+   → smith.langchain.com/hub (LangChain Hub)
+   ✓ Grátis, oficial, ready-to-use
+
+🟡 CAMINHO 2: Código + Prompts (1-2 horas)
+   → github.com/openai/openai-cookbook (⭐ 28k)
+   → github.com/anthropics/anthropic-examples (⭐ oficial)
+   → github.com/shadcn-ui/ui (⭐ 70k)
+   ✓ Grátis, testado, production-ready
+
+🔴 CAMINHO 3: Prompts Premium (1 hora)
+   → promptbase.com (marketplace)
+   ✓ Profissional, custeado, suportado
+
+**Melhor opção pra você:** Comece com Caminho 2 (GitHub + Docs)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+🎯 PARA SEUS PROJETOS ESPECÍFICOS
+═════════════════════════════════════════════════════════════════════════════
+
+Veja SKILLS-POR-PROJETO.md para mapping completo.
+
+Aqui tem um gostinho:
+
+TradeRisk (Análise de Crédito)
+  └─ OpenAI Cookbook + Anthropic Examples
+
+Portal Licitação Protegida
+  └─ LangChain Hub + Anthropic Examples
+
+LicitaRadar (Monitoramento)
+  └─ Apify + LangChain
+
+RiskInspect Pro (Dashboards)
+  └─ shadcn/ui + Tremor (copy-paste!)
+
+One Tower (Processamento Legal)
+  └─ Anthropic Examples
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+📱 ATALHOS IMEDIATOS (COPIE E ABRA AGORA)
+═════════════════════════════════════════════════════════════════════════════
+
+Análise Financeira:
+   https://github.com/openai/openai-cookbook
+
+Processamento de Documentos:
+   https://github.com/anthropics/anthropic-examples
+
+Componentes React:
+   https://github.com/shadcn-ui/ui
+
+Prompts Compartilhadas:
+   https://smith.langchain.com/hub
+
+Docs Anthropic:
+   https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+✅ O QUE VOCÊ VAI APRENDER NESSES ARQUIVOS
+═════════════════════════════════════════════════════════════════════════════
+
+✓ Onde buscar skills (7 fontes principais)
+✓ Como avaliar qualidade (checklist de 3 itens)
+✓ Qual skill para cada projeto seu
+✓ Passo-a-passo: como encontrar, clonar, adaptar
+✓ 50+ links diretos prontos pra clicar
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+🚀 PRÓXIMO PASSO RECOMENDADO
+═════════════════════════════════════════════════════════════════════════════
+
+1. Leia este arquivo (2 min) ✓ Você está aqui
+
+2. Abra QUICK-START-SKILLS.txt (5 min)
+   → Entenda os 3 caminhos
+
+3. Escolha 1 projeto seu (ex: Análise de Crédito)
+   → Veja em SKILLS-POR-PROJETO.md qual skill usar
+
+4. Abra o repositório recomendado
+   → Ex: github.com/openai/openai-cookbook
+
+5. Siga o exemplo-buscar-adaptar-skill.md
+   → Passo-a-passo para adaptar
+
+6. Integre com sua estrutura de skills
+   → Use scripts do outro arquivo (sync-all.sh)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+💡 DICAS IMPORTANTES
+═════════════════════════════════════════════════════════════════════════════
+
+✓ 90% do que você precisa está no OpenAI Cookbook ou Anthropic Docs
+  (grátis, oficial, bem documentado)
+
+✓ shadcn/ui é a forma mais rápida de fazer dashboards
+  (copy-paste direto, sem pensar)
+
+✓ Não pague por prompts no início
+  (PromptBase é só pra ideias, não implementação)
+
+✓ Adaptar é mais rápido que criar
+  (template + customização = 1-2h)
+
+✓ Sempre verifique: Stars > 100, últimas atualizações < 3 meses
+  (indica que é confiável)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+🔍 BOOKMARK ESSES 3 AGORA MESMO
+═════════════════════════════════════════════════════════════════════════════
+
+1. docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+   → Documentação oficial (melhor referência)
+
+2. github.com/search?q=YOUR_KEYWORD+language:python+stars:%3E100
+   → Busca avançada (template pronto)
+
+3. smith.langchain.com/hub
+   → Prompts prontas (descoberta rápida)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+❓ PERGUNTAS FREQUENTES
+═════════════════════════════════════════════════════════════════════════════
+
+P: Por onde começo?
+R: OpenAI Cookbook ou Anthropic Examples (vá no github.com)
+
+P: Qual é mais rápido, prompts prontas ou código?
+R: Prompts prontas (15 min), código (1-2h)
+
+P: Preciso pagar por alguma coisa?
+R: Não! 95% é grátis e open source
+
+P: Qual repositório é mais confiável?
+R: OpenAI Cookbook, Anthropic Examples, shadcn/ui
+   (28k+, oficial, 70k+ stars)
+
+P: Como saber se uma skill é boa?
+R: Veja o checklist em onde-encontrar-skills.md
+   (stars, atualizações, README)
+
+P: Posso usar em meus projetos comerciais?
+R: Sim, desde que seja MIT/Apache (90% é)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+🎓 VOCÊ VAI APRENDER:
+═════════════════════════════════════════════════════════════════════════════
+
+Depois de ler esses arquivos, você saberá:
+
+✓ Os 7 principais lugares pra buscar skills
+✓ Como avaliar qualidade rapidamente (15 segundos)
+✓ Exatamente qual skill usar para cada projeto
+✓ Passo-a-passo: encontrar → clonar → adaptar → usar
+✓ 50+ links específicos prontos pra clicar
+✓ Como sincronizar com Claude, Cursor e Manus
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+📊 TEMPO TOTAL
+═════════════════════════════════════════════════════════════════════════════
+
+Leitura completa: 30-45 minutos
+Implementação 1 skill: 1-2 horas
+Setup no seu repositório: 30 minutos
+
+Total: 2-3 horas pra estar totalmente produtivo
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+✨ BOA SORTE!
+═════════════════════════════════════════════════════════════════════════════
+
+Agora é com você. Pegue um projeto, busque a skill no repositório certo,
+adapte e integre.
+
+Qualquer dúvida, volte nesses arquivos que tem toda a resposta.
+
+
+Criado para: Adriano Tomasoni
+Data: 2026-04-12
+Atualização: Mensal
+
+═════════════════════════════════════════════════════════════════════════════

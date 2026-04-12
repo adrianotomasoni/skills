@@ -1,0 +1,265 @@
+╔═════════════════════════════════════════════════════════════════════════════╗
+║                                                                             ║
+║         🔄 GUIA DE SINCRONIZAÇÃO - adrianotomasoni/skills.git             ║
+║                                                                             ║
+║         Sincronize suas skills com Claude, Cursor e Manus                  ║
+║                                                                             ║
+╚═════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 O QUE FOI ENTREGUE
+═════════════════════════════════════════════════════════════════════════════
+
+✅ 1 GUIA COMPLETO
+   → sincronizacao-skills-repo.md (19 KB)
+   
+✅ 3 SCRIPTS PRONTOS
+   → sync-all.sh (sincroniza tudo com 1 comando)
+   → sync-to-claude.sh (sincroniza só Claude)
+   → sync-to-cursor.sh (sincroniza só Cursor)
+   
+✅ TODA A DOCUMENTAÇÃO ANTERIOR
+   → Onde encontrar skills
+   → Pesquisa de contabilidade internacional
+   → Links diretos de repositórios
+   → Exemplos de implementação
+
+
+═════════════════════════════════════════════════════════════════════════════
+🚀 COMEÇAR EM 5 MINUTOS
+═════════════════════════════════════════════════════════════════════════════
+
+1️⃣ Clone seu repositório (se não tiver)
+   git clone git@github.com:adrianotomasoni/skills.git
+   cd skills
+
+2️⃣ Copie os scripts para seu repositório
+   mkdir -p scripts/
+   cp sync-all.sh sync-to-claude.sh sync-to-cursor.sh scripts/
+   chmod +x scripts/*.sh
+
+3️⃣ Rode sincronização completa
+   ./scripts/sync-all.sh
+
+4️⃣ Pronto! ✅
+   • Claude acesso em: /mnt/skills/user/
+   • Cursor carregou .cursorrules
+   • GitHub foi atualizado
+
+
+═════════════════════════════════════════════════════════════════════════════
+📚 LEIA NESTA ORDEM
+═════════════════════════════════════════════════════════════════════════════
+
+1️⃣ Este arquivo (00-LEIA-PRIMEIRO-SINCRONIZACAO.txt)
+   ↓ Visão geral em 5 minutos
+
+2️⃣ sincronizacao-skills-repo.md
+   ↓ Guia completo com todas as partes
+
+3️⃣ Copie os scripts para seu repo
+   ↓ Próximo passo executável
+
+4️⃣ Execute sync-all.sh
+   ↓ Tudo sincronizado!
+
+
+═════════════════════════════════════════════════════════════════════════════
+🔄 3 FORMAS DE SINCRONIZAR
+═════════════════════════════════════════════════════════════════════════════
+
+OPÇÃO 1: TUDO DE UMA VEZ (Recomendado)
+────────────────────────────────────────
+   ./scripts/sync-all.sh
+   
+   ✓ Sincroniza Claude
+   ✓ Sincroniza Cursor
+   ✓ Valida Git
+   ✓ Oferece opção de push
+
+   Tempo: 2-3 minutos
+   Frequência: Sempre que adicionar/editar skills
+
+
+OPÇÃO 2: INDIVIDUAL (Mais Controle)
+────────────────────────────────────
+   ./scripts/sync-to-claude.sh
+   ./scripts/sync-to-cursor.sh
+   
+   ✓ Sincroniza um ambiente por vez
+   ✓ Útil pra testes
+   
+   Tempo: 30 segundos cada
+
+
+OPÇÃO 3: MANUAL (Último Recurso)
+────────────────────────────────
+   # Claude
+   cp skills/**/SKILL.md /mnt/skills/user/[skill-name]/
+   
+   # Cursor
+   cp .cursorrules ~/projects/[project]/.cursorrules
+   
+   # GitHub
+   git add skills/
+   git commit -m "Update skills"
+   git push origin main
+   
+   Tempo: 5 minutos
+   Quando usar: Se os scripts não funcionarem
+
+
+═════════════════════════════════════════════════════════════════════════════
+🎯 FLUXO TÍPICO DO DIA
+═════════════════════════════════════════════════════════════════════════════
+
+Manhã:
+  1. cd ~/skills
+  2. git pull origin main
+  3. Edite/crie skills
+
+Depois de editar:
+  1. ./scripts/sync-all.sh
+  2. Teste em Claude.ai
+  3. Teste em Cursor
+  4. Pronto!
+
+
+═════════════════════════════════════════════════════════════════════════════
+✅ VERIFICAR SE FUNCIONOU
+═════════════════════════════════════════════════════════════════════════════
+
+Claude ✓
+  ls -la /mnt/skills/user/
+  # Deve listar suas skills
+
+Cursor ✓
+  cat ~/.cursorrules
+  # Ou abra um projeto: ls .cursorrules
+
+GitHub ✓
+  git log --oneline | head
+  # Deve mostrar seus commits
+
+
+═════════════════════════════════════════════════════════════════════════════
+🔧 PERSONALIZAR PARA SEUS PROJETOS
+═════════════════════════════════════════════════════════════════════════════
+
+Edite: scripts/sync-to-cursor.sh
+
+Linha: CURSOR_PROJECTS=(...)
+
+Atualize com SEUS projetos:
+  "$HOME/projects/meu-projeto-1"
+  "$HOME/projects/meu-projeto-2"
+  "$HOME/projects/meu-projeto-3"
+
+
+═════════════════════════════════════════════════════════════════════════════
+⚙️ SETUP AVANÇADO (Opcional)
+═════════════════════════════════════════════════════════════════════════════
+
+Adicione alias ao bash/zsh:
+
+  # ~/.bashrc ou ~/.zshrc
+  alias sync-skills='~/skills/scripts/sync-all.sh'
+  
+Depois:
+  sync-skills    # Executa tudo!
+
+Ou configure cron (atualização automática a cada hora):
+
+  0 * * * * cd ~/skills && ./scripts/sync-all.sh >> ~/sync.log 2>&1
+
+
+═════════════════════════════════════════════════════════════════════════════
+🚨 TROUBLESHOOTING
+═════════════════════════════════════════════════════════════════════════════
+
+"Permission denied" ao rodar script
+  chmod +x scripts/*.sh
+
+"Não encontra /mnt/skills/user"
+  mkdir -p /mnt/skills/user
+  ./scripts/sync-all.sh
+
+"Git conflicts"
+  git pull origin main
+  Resolva conflicts manualmente
+  git commit -m "Resolve conflicts"
+
+"Claude não vê skills novas"
+  1. Rode sync-all.sh
+  2. Regenere contexto em Claude.ai (nova conversa)
+
+
+═════════════════════════════════════════════════════════════════════════════
+📚 DOCUMENTAÇÃO COMPLETA
+═════════════════════════════════════════════════════════════════════════════
+
+Para detalhes completos, veja:
+
+  📖 sincronizacao-skills-repo.md
+     - 12 partes explicadas
+     - Scripts comentados
+     - Exemplos de código
+     - Troubleshooting detalhado
+
+  📖 pesquisa-skills-contabilidade-internacional.md
+     - 30 países mapeados
+     - Skills específicas por tipo
+     - Análise setorial
+     - Risco país
+
+  📖 repositorios-especificos.md
+     - Links diretos prontos
+     - APIs gratuitas
+     - Código Python de exemplo
+     - Roadmap executável
+
+
+═════════════════════════════════════════════════════════════════════════════
+💡 DICAS IMPORTANTES
+═════════════════════════════════════════════════════════════════════════════
+
+✓ Sempre rode sync-all.sh APÓS adicionar skills
+✓ Use branches Git para novas features
+✓ Teste em Claude/Cursor antes de fazer push
+✓ Commit frequentemente (1 skill = 1 commit)
+✓ Mantenha README.md atualizado
+✓ Valide estrutura: cat skills/_index.yaml
+
+
+═════════════════════════════════════════════════════════════════════════════
+🎯 PRÓXIMOS PASSOS
+═════════════════════════════════════════════════════════════════════════════
+
+1. Leia sincronizacao-skills-repo.md (15 minutos)
+
+2. Configure seus projetos Cursor no script:
+   vim scripts/sync-to-cursor.sh
+
+3. Execute uma vez:
+   ./scripts/sync-all.sh
+
+4. Teste em:
+   - claude.ai
+   - Seu projeto Cursor
+   - GitHub
+
+5. Comece a usar!
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+Seu repositório: https://github.com/adrianotomasoni/skills.git
+Documentação: sincronizacao-skills-repo.md
+
+Qualquer dúvida, consulte a documentação completa.
+
+Bom trabalho! 🚀
+
+═════════════════════════════════════════════════════════════════════════════
+Atualizado: 2026-04-12
+Versão: 2.0 (Com suporte a adrianotomasoni/skills.git)
