@@ -34,10 +34,10 @@ Você é um especialista em análise de risco de crédito comercial...
 #### Opção A: Clone o Repositório
 ```bash
 # Clone para um local acessível
-git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/.cursor/skills
+git clone https://github.com/adrianotomasoni/skills.git ~/.cursor/skills
 
 # Ou para VS Code
-git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/.vscode/skills
+git clone https://github.com/adrianotomasoni/skills.git ~/.vscode/skills
 ```
 
 #### Opção B: Configurar `.cursor/rules.md`
@@ -107,14 +107,14 @@ Para usar:
 
 1. **Clone o repo:**
 ```bash
-git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/projects/traderisk-skills
+git clone https://github.com/adrianotomasoni/skills.git ~/projects/skills
 ```
 
 2. **Crie `manus.config.json` na raiz do seu projeto:**
 ```json
 {
-  "skillsPath": "~/projects/traderisk-skills/skills",
-  "skillsRegistry": "~/projects/traderisk-skills/registry.json",
+  "skillsPath": "~/projects/skills/skills",
+  "skillsRegistry": "~/projects/skills/registry.json",
   "autoLoadSkills": true,
   "categories": [
     "core",
@@ -135,7 +135,7 @@ Tenho um caso de garantia judicial. Como proceder?
 
 4. **Ou referencie diretamente:**
 ```
-~/projects/traderisk-skills/skills/core/judicial-monitoring/
+~/projects/skills/skills/core/judicial-monitoring/
 
 Qual é o contexto para classificação nível C?
 ```
@@ -170,7 +170,7 @@ git push origin feature/improve-credit-risk-skill
 ```
 
 5. **Abra Pull Request no GitHub:**
-- Vá para https://github.com/adrianotomasoni/traderisk-skills/pulls
+- Vá para https://github.com/adrianotomasoni/skills/pulls
 - Clique "New Pull Request"
 - Selecione sua branch
 - Descreva as mudanças
@@ -185,10 +185,10 @@ Se você está usando Claude Code no seu ambiente local:
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/adrianotomasoni/traderisk-skills.git
+git clone https://github.com/adrianotomasoni/skills.git
 
 # 2. Navegue para uma skill
-cd traderisk-skills/skills/core/judicial-monitoring
+cd skills/skills/core/judicial-monitoring
 
 # 3. Peça ajuda ao Claude Code
 # No seu editor, cole o prompt:
@@ -332,7 +332,7 @@ git push
 echo "🔄 Sincronizando skills entre plataformas..."
 
 # 1. Pull do GitHub
-cd ~/projects/traderisk-skills
+cd ~/projects/skills
 git pull origin main
 
 # 2. Sincronizar Cursor

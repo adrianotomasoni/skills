@@ -50,7 +50,7 @@ Um **repositório GitHub profissional** para organizar e sincronizar todas as su
 
 1. **Crie repositório no GitHub**:
    - Vá em https://github.com/new
-   - Nome: `traderisk-skills`
+   - Nome: `skills`
    - Descrição: "Repositório centralizado de skills para TradeRisk"
    - Privado ou Público (recomendo Privado)
    - Clique "Create repository"
@@ -61,8 +61,8 @@ Um **repositório GitHub profissional** para organizar e sincronizar todas as su
    # Ou use os comandos abaixo:
    
    cd ~/projects
-   git clone https://github.com/seu-usuario/traderisk-skills.git
-   cd traderisk-skills
+   git clone https://github.com/adrianotomasoni/skills.git
+   cd skills
    
    # Copie os arquivos de /mnt/user-data/outputs/
    # para seu repositório
@@ -77,7 +77,7 @@ Um **repositório GitHub profissional** para organizar e sincronizar todas as su
 
 4. **Use em Cursor**:
    ```bash
-   git clone https://github.com/seu-usuario/traderisk-skills.git ~/.cursor/skills
+   git clone https://github.com/adrianotomasoni/skills.git ~/.cursor/skills
    # Restart Cursor
    # Pronto!
    ```
@@ -128,7 +128,7 @@ Veja **CONTRIBUTING.md** para guia detalhado de:
 Quando estiver pronto, migre suas skills assim:
 
 ```
-traderisk-skills/
+skills/
 ├── skills/
 │   ├── core/
 │   │   ├── judicial-monitoring/

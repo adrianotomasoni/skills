@@ -91,7 +91,7 @@ Qualidade: Pronto para produção ✅
 
 📋 ESTRUTURA QUE SERÁ CRIADA:
 
-traderisk-skills/
+skills/
 ├── README.md                       ← O que é este repositório
 ├── QUICK-START.md                  ← Setup em 5 minutos
 ├── INTEGRATION.md                  ← Como usar em cada plataforma
