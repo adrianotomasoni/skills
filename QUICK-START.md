@@ -3,8 +3,8 @@
 ## 1️⃣ Clone o Repositório
 
 ```bash
-git clone https://github.com/adrianotomasoni/traderisk-skills.git
-cd traderisk-skills
+git clone https://github.com/adrianotomasoni/skills.git
+cd skills
 ```
 
 ## 2️⃣ Escolha Sua Plataforma
@@ -26,7 +26,7 @@ cd traderisk-skills
 
 ```bash
 # 1. Clone para ~/.cursor/
-git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/.cursor/skills
+git clone https://github.com/adrianotomasoni/skills.git ~/.cursor/skills
 
 # 2. Restart Cursor
 
@@ -42,7 +42,7 @@ git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/.cursor/skil
 # 1. Configure em seu projeto:
 cat > manus.config.json << 'EOF'
 {
-  "skillsPath": "~/projects/traderisk-skills/skills",
+  "skillsPath": "~/projects/skills/skills",
   "autoLoadSkills": true
 }
 EOF
@@ -58,7 +58,7 @@ EOF
 
 ```bash
 # Clone para editar
-git clone https://github.com/adrianotomasoni/traderisk-skills.git
+git clone https://github.com/adrianotomasoni/skills.git
 
 # Configure Git
 git config user.name "Seu Nome"
@@ -129,7 +129,7 @@ Tenho um caso novo: [descrição]
 ## 📊 Estrutura Rápida
 
 ```
-traderisk-skills/
+skills/
 ├── skills/
 │   ├── core/                    ← Skills de negócio
 │   ├── frontend/                ← Design e UI
