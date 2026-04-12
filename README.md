@@ -5,7 +5,7 @@ Um repositório centralizado para todas as skills customizadas da TradeRisk, org
 ## 📁 Estrutura do Repositório
 
 ```
-traderisk-skills/
+skills/
 ├── README.md
 ├── .gitignore
 ├── registry.json                          # Índice master de todas as skills
@@ -138,7 +138,7 @@ traderisk-skills/
 ### 2. **Em Cursor**
 ```
 1. Clone o repositório:
-   git clone https://github.com/adrianotomasoni/traderisk-skills.git ~/.cursor/skills
+   git clone https://github.com/adrianotomasoni/skills.git ~/.cursor/skills
 
 2. Configure no .cursor/rules.md:
    {projeto} deve usar skills do repositório em ~/.cursor/skills
@@ -150,7 +150,7 @@ traderisk-skills/
 ```
 1. Configure o caminho no manus.config.json:
    {
-     "skillsPath": "~/projects/traderisk-skills/skills"
+     "skillsPath": "~/projects/skills/skills"
    }
 
 2. Use: @skill-judicial-monitoring
@@ -158,8 +158,8 @@ traderisk-skills/
 
 ### 4. **No GitHub (Source of Truth)**
 ```
-git clone https://github.com/adrianotomasoni/traderisk-skills.git
-cd traderisk-skills
+git clone https://github.com/adrianotomasoni/skills.git
+cd skills
 git checkout -b feature/improve-credit-risk
 # edite skills
 git commit -am "Improve credit risk skill"

@@ -146,13 +146,13 @@ python3 generate-registry.py --summary        # Gera + mostra resumo
 
 2. **Crie repositório no GitHub**
    - https://github.com/new
-   - Nome: `traderisk-skills`
+   - Nome: `skills`
    - Privado ou público
 
 3. **Clone localmente**
    ```bash
    git clone https://seu-repositorio-novo.git
-   cd traderisk-skills
+   cd skills
    ```
 
 4. **Copie os arquivos**
@@ -189,7 +189,7 @@ python3 generate-registry.py --summary        # Gera + mostra resumo
 ## 💾 ESTRUTURA FINAL
 
 ```
-traderisk-skills/  (seu repositório GitHub)
+skills/  (seu repositório GitHub)
 ├── README.md
 ├── QUICK-START.md
 ├── INTEGRATION.md
