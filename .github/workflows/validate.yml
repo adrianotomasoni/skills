@@ -1,0 +1,38 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main, "feature/**", "fix/**"]
+    paths:
+      - "skills/**"
+      - "scripts/validate-skills.py"
+  pull_request:
+    branches: [main]
+    paths:
+      - "skills/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate skill structure
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate all skills
+        run: python scripts/validate-skills.py
+
+      - name: Run structural tests
+        run: python scripts/test-skills.py
+
+      - name: Check registry is up to date
+        run: |
+          python scripts/generate-registry.py --dry-run > /tmp/generated-registry.json
+          if ! diff -q registry.json /tmp/generated-registry.json > /dev/null 2>&1; then
+            echo "⚠️ registry.json may be out of date. Run: python scripts/generate-registry.py"
+          fi

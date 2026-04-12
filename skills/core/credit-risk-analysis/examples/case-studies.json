@@ -1,0 +1,22 @@
+[
+  {
+    "id": "case-001",
+    "empresa": "Construtora Anonimizada Ltda",
+    "cnpj_mascarado": "12.3XX.XXX/0001-XX",
+    "score": 720,
+    "rating": "B",
+    "decisao": "Aprovado com limite de R$ 500.000",
+    "destaques": ["Boa liquidez", "Setor com risco médio", "Sem restrições"],
+    "resultado_real": "Operação liquidada sem inadimplência"
+  },
+  {
+    "id": "case-002",
+    "empresa": "Transportadora Anonimizada Eireli",
+    "cnpj_mascarado": "98.7XX.XXX/0001-XX",
+    "score": 380,
+    "rating": "D",
+    "decisao": "Condicionado a aval de sócio",
+    "destaques": ["Protestos em cartório", "Baixa cobertura de juros"],
+    "resultado_real": "Operação aprovada com garantia adicional, sem sinistro"
+  }
+]

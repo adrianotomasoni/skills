@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-12T21:42:28Z",
+  "repository": "https://github.com/adrianotomasoni/skills",
+  "maintainer": "adriano@traderisk.com.br",
+  "skills": [
+    {
+      "id": "internal-comms",
+      "category": "content",
+      "name": "Comunicação Interna",
+      "version": "1.0.0",
+      "description": "",
+      "path": "skills/content/internal-comms",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "communication",
+        "culture",
+        "internal",
+        "templates"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "skill-traderisk-content-writer",
+      "category": "content",
+      "name": "TradeRisk Content Writer",
+      "version": "2.0.0",
+      "description": "",
+      "path": "skills/content/skill-traderisk-content-writer",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "content",
+        "copywriting",
+        "seo",
+        "tone-of-voice",
+        "traderisk"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "credit-risk-analysis",
+      "category": "core",
+      "name": "Análise de Risco de Crédito",
+      "version": "2.1.0",
+      "description": "Produzir um parecer estruturado de risco de crédito com:",
+      "path": "skills/core/credit-risk-analysis",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "b2b",
+        "credit",
+        "parecer",
+        "rating",
+        "risk"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "judicial-monitoring",
+      "category": "core",
+      "name": "Monitoramento Judicial Proativo",
+      "version": "4.0.0",
+      "description": "Detectar automaticamente eventos judiciais que indicam:",
+      "path": "skills/core/judicial-monitoring",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "eventos",
+        "judicial",
+        "monitoring",
+        "risco",
+        "seguro-garantia"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "licitaradar",
+      "category": "core",
+      "name": "LicitaRadar",
+      "version": "1.0.0",
+      "description": "- Monitorar licitações em tempo real via PNCP",
+      "path": "skills/core/licitaradar",
+      "file": "SKILL.md",
+      "status": "beta",
+      "tags": [
+        "government",
+        "licitacao",
+        "monitoring",
+        "pncp",
+        "seguro-garantia"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "seo-audit-traderisk",
+      "category": "core",
+      "name": "SEO Audit TradeRisk",
+      "version": "1.2.0",
+      "description": "Realizar auditorias de SEO e gerar recomendações de otimização para:",
+      "path": "skills/core/seo-audit-traderisk",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "audit",
+        "b2b",
+        "content",
+        "seo",
+        "traderisk"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "api-design-restful",
+      "category": "engineering",
+      "name": "API Design RESTful",
+      "version": "1.2.0",
+      "description": "",
+      "path": "skills/engineering/api-design-restful",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "api",
+        "design",
+        "engineering",
+        "rest",
+        "standards"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "code-review-checklist",
+      "category": "engineering",
+      "name": "Code Review Checklist",
+      "version": "1.3.0",
+      "description": "",
+      "path": "skills/engineering/code-review-checklist",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "code-review",
+        "engineering",
+        "react",
+        "supabase",
+        "typescript"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "doc-coauthoring",
+      "category": "engineering",
+      "name": "Documentação Co-Autoria",
+      "version": "1.0.0",
+      "description": "",
+      "path": "skills/engineering/doc-coauthoring",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "adr",
+        "coauthoring",
+        "documentation",
+        "runbook",
+        "technical-writing"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "apresentacao-alto-impacto",
+      "category": "frontend",
+      "name": "Apresentação de Alto Impacto",
+      "version": "1.0.0",
+      "description": "Criar apresentações que:",
+      "path": "skills/frontend/apresentacao-alto-impacto",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "design",
+        "executive",
+        "pitch",
+        "presentation",
+        "slides"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "frontend-design",
+      "category": "frontend",
+      "name": "Frontend Design Patterns",
+      "version": "1.1.0",
+      "description": "",
+      "path": "skills/frontend/frontend-design",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "components",
+        "design",
+        "frontend",
+        "patterns",
+        "ux"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "traderisk-frontend-design",
+      "category": "frontend",
+      "name": "TradeRisk Frontend Design",
+      "version": "3.1.0",
+      "description": "",
+      "path": "skills/frontend/traderisk-frontend-design",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [
+        "design",
+        "frontend",
+        "nextjs",
+        "react",
+        "shadcn",
+        "tailwind"
+      ],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "file-reading",
+      "category": "tools",
+      "name": "File Reading",
+      "version": "1.0.0",
+      "description": "",
+      "path": "skills/tools/file-reading",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "mcp-builder",
+      "category": "tools",
+      "name": "MCP Builder",
+      "version": "1.0.0",
+      "description": "",
+      "path": "skills/tools/mcp-builder",
+      "file": "SKILL.md",
+      "status": "beta",
+      "tags": [],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    },
+    {
+      "id": "pdf-operations",
+      "category": "tools",
+      "name": "PDF Operations",
+      "version": "1.0.0",
+      "description": "",
+      "path": "skills/tools/pdf-operations",
+      "file": "SKILL.md",
+      "status": "stable",
+      "tags": [],
+      "maintainer": "adriano@traderisk.com.br",
+      "lastModified": "2026-04-12"
+    }
+  ]
+}

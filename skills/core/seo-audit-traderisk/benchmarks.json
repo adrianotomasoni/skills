@@ -1,0 +1,25 @@
+{
+  "setor": "Seguro Garantia e Crédito B2B",
+  "benchmarks": {
+    "taxaRejeicao": {
+      "excelente": "<40%",
+      "bom": "40-55%",
+      "ruim": ">55%"
+    },
+    "tempoNaPagina": {
+      "excelente": ">3min",
+      "bom": "1.5-3min",
+      "ruim": "<1.5min"
+    },
+    "corWebVitals": {
+      "LCP": "<2.5s",
+      "FID": "<100ms",
+      "CLS": "<0.1"
+    }
+  },
+  "competidores": [
+    "ituran.com.br",
+    "sombrero.com.br",
+    "avalgarantias.com.br"
+  ]
+}
