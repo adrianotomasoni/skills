@@ -1,0 +1,21 @@
+{
+  "id": "traderisk-frontend-design",
+  "name": "TradeRisk Frontend Design",
+  "version": "3.1.0",
+  "category": "frontend",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["design-system", "ui", "traderisk", "tailwind", "shadcn", "nextjs"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

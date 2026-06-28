@@ -1,0 +1,21 @@
+{
+  "id": "auditoria-de-seo-on-page",
+  "name": "auditoria-de-seo-on-page",
+  "version": "1.0.0",
+  "category": "core",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["seo", "on-page", "auditoria", "conteudo", "checklist"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

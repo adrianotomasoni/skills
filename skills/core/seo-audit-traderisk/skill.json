@@ -1,0 +1,21 @@
+{
+  "id": "seo-audit-traderisk",
+  "name": "SEO Audit TradeRisk",
+  "version": "1.2.0",
+  "category": "core",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["seo", "auditoria", "traderisk", "on-page", "conteudo", "b2b"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

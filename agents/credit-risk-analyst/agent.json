@@ -1,0 +1,31 @@
+{
+  "id": "credit-risk-analyst",
+  "name": "Analista de Risco de Crédito",
+  "version": "1.0.0",
+  "status": "stable",
+  "maintainer": "adriano@traderisk.com.br",
+  "linkedSkills": ["credit-risk-analysis"],
+  "platforms": {
+    "claude-code": {
+      "kind": "subagent",
+      "path": "~/.claude/agents/credit-risk-analyst.md",
+      "notes": "Markdown com frontmatter name/description/tools/model."
+    },
+    "openai": {
+      "kind": "assistant-or-custom-gpt",
+      "notes": "Usar AGENT.md (sem frontmatter) como Instructions; tools viram Functions."
+    },
+    "gemini": {
+      "kind": "system-instruction",
+      "notes": "Corpo do AGENT.md como system instruction; ferramentas via function calling."
+    },
+    "cursor": {
+      "kind": "rules-or-mode",
+      "notes": "Converter para .cursor/rules/credit-risk-analyst.mdc."
+    },
+    "manus": {
+      "kind": "agent-config",
+      "notes": "Corpo sem frontmatter no campo de instruções do agente."
+    }
+  }
+}

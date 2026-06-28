@@ -1,14 +1,24 @@
-# Skill: TradeRisk Frontend Design
-# ID: traderisk-frontend-design
-# Version: 3.1.0
-# Category: frontend
-# Status: stable
+---
+name: traderisk-frontend-design
+description: "Define o design system e a UI do produto TradeRisk — cores, tipografia e padrões de componentes. Use SEMPRE que houver: criar/ajustar telas ou componentes do produto TradeRisk, aplicar o design system, padronizar visual de dashboards financeiros internos. Não usar para apresentações/decks (use apresentacao-alto-impacto)."
+---
 
-## Identidade
+# TradeRisk Frontend Design
 
-Você é o design system da TradeRisk. Ao criar interfaces, componentes ou layouts, siga rigorosamente estes padrões visuais e de código.
+## Overview
 
-## Stack Tecnológica
+Você é o design system da TradeRisk. Ao criar interfaces, componentes ou layouts, siga rigorosamente estes padrões visuais e de código para garantir consistência em todo o produto.
+
+## Quando usar
+
+- Criar ou ajustar telas e componentes do produto TradeRisk
+- Aplicar o design system (cores, tipografia, componentes) em uma interface do produto
+- Padronizar o visual de dashboards e telas financeiras internas
+- **Quando NÃO usar:** apresentações, decks ou pitches comerciais → use `apresentacao-alto-impacto`
+
+## Core Pattern
+
+### Stack Tecnológica
 
 - **Framework**: Next.js 14+ (App Router)
 - **Styling**: Tailwind CSS + shadcn/ui
@@ -16,7 +26,7 @@ Você é o design system da TradeRisk. Ao criar interfaces, componentes ou layou
 - **Icons**: Lucide React
 - **Forms**: React Hook Form + Zod
 
-## Paleta de Cores
+### Paleta de Cores
 
 ```typescript
 // Design tokens TradeRisk
@@ -35,15 +45,15 @@ export const colors = {
 };
 ```
 
-## Tipografia
+### Tipografia
 
 - **Headings**: Inter (peso 600-700)
 - **Body**: Inter (peso 400)
 - **Monospace**: JetBrains Mono (dados financeiros)
 
-## Padrões de Componente
+### Padrões de Componente
 
-### Cards Financeiros
+#### Cards Financeiros
 ```tsx
 <Card className="border-l-4 border-primary">
   <CardHeader>
@@ -57,18 +67,26 @@ export const colors = {
 </Card>
 ```
 
-### Badges de Status
+#### Badges de Status
 - `stable`: verde (`bg-green-100 text-green-800`)
 - `beta`: amarelo (`bg-yellow-100 text-yellow-800`)
 - `deprecated`: vermelho (`bg-red-100 text-red-800`)
 
-## Princípios de UX
+## Quick Reference
 
-1. **Data-first**: Dados financeiros sempre em destaque
-2. **Densidade**: Mais informação por tela (usuários B2B)
-3. **Consistência**: Usar shadcn/ui como base, nunca reinventar
-4. **Acessibilidade**: WCAG 2.1 AA mínimo
+| Elemento | Padrão |
+|----------|--------|
+| Cor primária | `#1E40AF` (azul TradeRisk) |
+| Fonte headings/body | Inter |
+| Fonte dados financeiros | JetBrains Mono |
+| Base de componentes | shadcn/ui |
+| Charts | Tremor / Recharts |
+| Ícones | Lucide React |
+| Acessibilidade mínima | WCAG 2.1 AA |
 
----
+## Common Mistakes
 
-**Versão**: 3.1.0 | **Última atualização**: 2026-04-05 | **Maintainer**: adriano@traderisk.com.br
+- Reinventar componentes em vez de usar shadcn/ui como base → sempre partir do shadcn/ui.
+- Esconder dados financeiros em texto pequeno → dados sempre em destaque (data-first).
+- Layout com baixa densidade → usuários B2B esperam mais informação por tela.
+- Ignorar contraste e navegação por teclado → manter WCAG 2.1 AA no mínimo.

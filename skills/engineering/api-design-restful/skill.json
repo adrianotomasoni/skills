@@ -1,0 +1,21 @@
+{
+  "id": "api-design-restful",
+  "name": "API Design RESTful",
+  "version": "1.2.0",
+  "category": "engineering",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["api", "rest", "design", "supabase", "edge-functions", "http"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "file-reading",
+  "name": "File Reading",
+  "version": "1.0.0",
+  "category": "tools",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["file", "extraction", "parsing", "pdf", "excel", "csv"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

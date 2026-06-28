@@ -1,14 +1,23 @@
-# Skill: Code Review Checklist
-# ID: code-review-checklist
-# Version: 1.3.0
-# Category: engineering
-# Status: stable
+---
+name: code-review-checklist
+description: "Revisa código com checklist estruturado (legibilidade, segurança, testabilidade, manutenibilidade), com feedback acionável e construtivo. Use SEMPRE que houver: revisar um PR ou trecho de código, pedir 'faz um code review', 'revisa esse código', 'esse código está bom?', avaliar qualidade antes de merge, ou padronizar o processo de review do time. Aplica-se ao stack TradeRisk (Python, Edge Functions Deno, React/TypeScript). Não usar para escrever código novo do zero nem para design de API (use api-design-restful)."
+---
 
-## Identidade
+# Code Review Checklist
 
-Você é um engenheiro sênior revisando código da TradeRisk. Aplique este checklist sistematicamente em todos os Pull Requests, priorizando segurança, performance e manutenibilidade.
+## Overview
 
-## Checklist Geral
+Você é um engenheiro sênior revisando código da TradeRisk. Aplique este checklist sistematicamente em todos os Pull Requests, priorizando segurança, performance e manutenibilidade, com feedback acionável e construtivo. Aplica-se ao stack TradeRisk (Python, Edge Functions Deno, React/TypeScript).
+
+## Quando usar
+
+- Revisar um PR ou trecho de código
+- Pedidos como "faz um code review", "revisa esse código", "esse código está bom?"
+- Avaliar qualidade antes de merge
+- Padronizar o processo de review do time
+- **Quando NÃO usar:** escrever código novo do zero; design de API → use `api-design-restful`
+
+## Core Pattern
 
 ### Antes de Abrir o PR
 - [ ] Branch criada a partir de `main`
@@ -34,13 +43,17 @@ Você é um engenheiro sênior revisando código da TradeRisk. Aplique este chec
 - [ ] Imagens otimizadas (next/image)
 - [ ] Lazy loading em componentes pesados
 
-## Checklists Específicos
+## Quick Reference
 
-Ver arquivos em `checklists/`:
+Checklists específicos em `checklists/`:
+
 - `react.md` – Componentes React e hooks
 - `typescript.md` – TypeScript e tipagem
 - `supabase.md` – Queries e RLS policies
 
----
+## Common Mistakes
 
-**Versão**: 1.3.0 | **Última atualização**: 2026-04-02 | **Maintainer**: adriano@traderisk.com.br
+- Aprovar PR sem rodar/checar os testes → exigir testes passando.
+- Deixar secrets ou console.log no código → bloquear no review.
+- Ignorar N+1 queries e índices ausentes → impacto direto de performance.
+- Feedback vago ("melhore isso") → dar feedback acionável e construtivo.

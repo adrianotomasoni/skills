@@ -1,0 +1,21 @@
+{
+  "id": "skill-traderisk-content-writer",
+  "name": "TradeRisk Content Writer",
+  "version": "2.0.0",
+  "category": "content",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["conteudo", "redacao", "seguro-credito", "b2b", "blog", "linkedin", "email", "traderisk"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "internal-comms",
+  "name": "Comunicação Interna",
+  "version": "1.0.0",
+  "category": "content",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["comunicacao-interna", "comunicado", "anuncio", "time", "corporativo", "traderisk"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

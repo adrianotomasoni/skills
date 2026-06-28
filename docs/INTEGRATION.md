@@ -1,5 +1,11 @@
 # INTEGRATION.md - Como Integrar Skills em Diferentes Plataformas
 
+> **Formato canônico:** as skills agora usam **frontmatter YAML** (`name` + `description`)
+> + `skill.json`. Para o mapa completo de adaptação por plataforma e o fluxo de
+> exportação automatizada (`scripts/export-adapters.py`), veja
+> **[MULTIPLATFORM.md](MULTIPLATFORM.md)** e o catálogo em **[USAGE.md](USAGE.md)**.
+> Este guia traz o passo a passo de setup em cada ambiente.
+
 ## 1️⃣ Claude.ai (Web)
 
 ### Método A: Upload Direto

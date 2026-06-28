@@ -1,0 +1,21 @@
+{
+  "id": "pdf-operations",
+  "name": "PDF Operations",
+  "version": "1.0.0",
+  "category": "tools",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["pdf", "ocr", "extraction", "tables", "contracts", "documents"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

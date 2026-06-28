@@ -1,0 +1,21 @@
+{
+  "id": "credit-risk-analysis",
+  "name": "Análise de Risco de Crédito",
+  "version": "2.1.0",
+  "category": "core",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["credito", "risco", "b2b", "rating", "score", "cnpj", "brasil"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

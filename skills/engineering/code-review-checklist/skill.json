@@ -1,0 +1,21 @@
+{
+  "id": "code-review-checklist",
+  "name": "Code Review Checklist",
+  "version": "1.3.0",
+  "category": "engineering",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["code-review", "quality", "security", "pull-request", "checklist", "traderisk"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

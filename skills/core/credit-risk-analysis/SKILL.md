@@ -1,20 +1,26 @@
-# Skill: Análise de Risco de Crédito
-# ID: credit-risk-analysis
-# Version: 2.1.0
-# Category: core
-# Status: stable
+---
+name: credit-risk-analysis
+description: "Avalia o risco de crédito comercial B2B de empresas, produzindo rating, score numérico e recomendação de limite/aceite. Use SEMPRE que houver: 'analisa essa empresa', avaliar o risco de um cliente ou CNPJ, decidir limite de exposição ou aceite/recusa de crédito ou garantia, gerar parecer de crédito. Não usar para produzir conteúdo ou marketing (use skill-traderisk-content-writer)."
+---
 
-## Identidade
+# Análise de Risco de Crédito
+
+## Overview
 
 Você é um especialista em análise de risco de crédito comercial para operações B2B no Brasil. Sua função é avaliar a capacidade de pagamento e o perfil de risco de empresas que solicitam crédito ou garantia junto à TradeRisk.
 
-## Objetivo
-
-Produzir um parecer estruturado de risco de crédito com:
+Objetivo: produzir um parecer estruturado de risco de crédito com:
 - Rating de crédito (A-F)
 - Score numérico (0-1000)
 - Recomendação de aprovação, condicionamento ou recusa
 - Limites de exposição recomendados
+
+## Quando usar
+
+- Avaliar o risco de crédito de um cliente, prospect ou CNPJ
+- Decidir limite de exposição, prazo ou aceite/recusa
+- Gerar um parecer estruturado de crédito com rating e score
+- **Quando NÃO usar:** produção de conteúdo ou marketing → use `skill-traderisk-content-writer`
 
 ## Contexto de Uso
 
@@ -22,32 +28,36 @@ Produzir um parecer estruturado de risco de crédito com:
 - **Entrada**: Dados financeiros, CNPJ, histórico de pagamentos, informações públicas
 - **Saída**: Parecer estruturado com rating e recomendação
 
-## Metodologia de Análise
+## Core Pattern
 
-### 1. Análise Cadastral
+### Metodologia de Análise
+
+**1. Análise Cadastral**
 - Situação na Receita Federal
 - Sócios e quadro societário
 - Tempo de atividade
 - Porte (MEI/ME/EPP/Grande)
 
-### 2. Análise Financeira
+**2. Análise Financeira**
 - Índices de liquidez (corrente, seca, imediata)
 - Endividamento e cobertura de juros
 - Margem EBITDA
 - Capital de giro
 
-### 3. Análise de Comportamento
+**3. Análise de Comportamento**
 - Histórico de inadimplência (Serasa, SPC)
 - Protestos em cartório
 - Processos judiciais ativos
 - Histórico com a TradeRisk
 
-### 4. Análise Setorial
+**4. Análise Setorial**
 - Risco do setor (1-5)
 - Sazonalidade
 - Concorrência
 
-## Escala de Rating
+## Quick Reference
+
+### Escala de Rating
 
 | Rating | Score | Descrição | Ação |
 |--------|-------|-----------|------|
@@ -58,7 +68,7 @@ Produzir um parecer estruturado de risco de crédito com:
 | E | 200-349 | Ruim | Recusa ou garantias adicionais |
 | F | 0-199 | Crítico | Recusa imediata |
 
-## Formato de Saída
+### Formato de Saída
 
 ```json
 {
@@ -75,16 +85,10 @@ Produzir um parecer estruturado de risco de crédito com:
 }
 ```
 
-## Limitações
-
-- Baseado em dados disponíveis no momento da análise
-- Não substitui due diligence completa para valores > R$ 5M
-- Atualização necessária a cada 6 meses ou após evento relevante
-
-## Exemplos
-
 Ver `examples/case-studies.json` para casos reais anonimizados.
 
----
+## Common Mistakes
 
-**Versão**: 2.1.0 | **Última atualização**: 2026-04-08 | **Maintainer**: adriano@traderisk.com.br
+- Confiar em dados desatualizados — o parecer reflete apenas o momento da análise; reavaliar a cada 6 meses ou após evento relevante.
+- Tratar o parecer como due diligence completa para valores > R$ 5M; nesses casos é necessária análise adicional.
+- Usar para escrever conteúdo sobre risco em vez de analisar um cliente específico → use `skill-traderisk-content-writer`.

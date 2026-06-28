@@ -1,5 +1,9 @@
 # Como Contribuir com Novas Skills
 
+> **Leia primeiro:** a regra-mãe [`multiplatform-authoring`](../skills/meta/multiplatform-authoring/SKILL.md)
+> e [MULTIPLATFORM.md](MULTIPLATFORM.md). Toda skill/agente segue o **formato canônico**
+> (frontmatter YAML + `skill.json`).
+
 ## Pré-requisitos
 
 - Git configurado com suas credenciais
@@ -19,63 +23,52 @@ git checkout -b feature/skill-nome-da-skill
 ### 2. Crie a Estrutura de Diretório
 
 ```bash
-# Escolha a categoria: core / frontend / content / engineering / tools
+# Categorias: core / frontend / content / engineering / tools / process / meta
 CATEGORIA=core
 SKILL_ID=minha-nova-skill
 
-mkdir -p skills/$CATEGORIA/$SKILL_ID/{examples,tests}
+mkdir -p skills/$CATEGORIA/$SKILL_ID
+cp templates/SKILL-TEMPLATE.md skills/$CATEGORIA/$SKILL_ID/SKILL.md
+cp templates/skill.json        skills/$CATEGORIA/$SKILL_ID/skill.json
 ```
 
-### 3. Crie o SKILL.md
+### 3. Edite o SKILL.md (formato canônico)
 
-Copie o template `docs/SKILL-TEMPLATE.md` (se existir) ou use esta estrutura:
+Frontmatter YAML com **apenas** `name` + `description` (bloco ≤ 1024 chars):
 
 ```markdown
-# Skill: [Nome da Skill]
-# ID: [skill-id]
-# Version: 1.0.0
-# Category: [core|frontend|content|engineering|tools]
-# Status: [stable|beta|experimental]
-
-## Identidade
-[Quem você é e qual sua função]
-
-## Objetivo
-[O que esta skill faz]
-
-## [Seções específicas da skill]
-
 ---
-**Versão**: 1.0.0 | **Última atualização**: YYYY-MM-DD | **Maintainer**: seu@email.com
+name: minha-nova-skill   # == nome da pasta, ^[a-z0-9-]+$
+description: "[O que faz]. Use SEMPRE que houver: [gatilhos concretos]. Não usar para [fronteira] (use <outra-skill>)."
+---
+
+# Nome Legível
+
+## Overview
+## Quando usar
+## Core Pattern
+## Quick Reference
+## Common Mistakes
 ```
 
-### 4. Crie o README.md
+Regras de `name`/`description` (terceira pessoa, gatilhos, **sem resumir workflow**):
+[naming-rules](../skills/meta/multiplatform-authoring/references/naming-rules.md).
 
-```markdown
-# [Nome da Skill]
+### 4. Edite o skill.json + README.md
 
-[Descrição em uma linha]
-
-## Versão
-**1.0.0**
-
-## Como Usar
-[Exemplos de uso]
-
-## Tags
-`tag1` `tag2`
-```
+Preencha `version`, `category`, `status`, `type`, `tags`, `platforms` no `skill.json`.
+Crie um `README.md` curto (o que é + como usar + tags).
 
 ### 5. Valide a Skill
 
 ```bash
-python scripts/validate-skills.py --skill $CATEGORIA/$SKILL_ID
+python3 scripts/validate-skills.py --skill $CATEGORIA/$SKILL_ID
 ```
 
 ### 6. Atualize o Registry
 
 ```bash
-python scripts/generate-registry.py
+python3 scripts/generate-registry.py
 ```
 
 ### 7. Commit e Pull Request
@@ -119,12 +112,16 @@ git push origin fix/skill-nome-da-skill
 
 ## Checklist antes do PR
 
-- [ ] `SKILL.md` criado com todos os campos obrigatórios
-- [ ] `README.md` com exemplo de uso
-- [ ] Versão atualizada no `SKILL.md`
-- [ ] `registry.json` atualizado
-- [ ] `python scripts/validate-skills.py` passou sem erros
+- [ ] `SKILL.md` com frontmatter (`name`==pasta, `description` no padrão de gatilhos, bloco ≤ 1024 chars)
+- [ ] `skill.json` com `category`/`status`/`type` válidos e `platforms` preenchido
+- [ ] `README.md` presente
+- [ ] Versão atualizada no `skill.json`
+- [ ] `python3 scripts/validate-skills.py --strict` passou sem erros
+- [ ] `python3 scripts/generate-registry.py` rodado e `registry.json` commitado
+- [ ] (agentes) `python3 scripts/validate-agents.py` passou
 - [ ] Commit com mensagem clara (Conventional Commits)
+
+Checklist completo: [validation-checklist](../skills/meta/multiplatform-authoring/references/validation-checklist.md).
 
 ---
 
