@@ -37,8 +37,16 @@
 - [ ] Nenhum agente tem `id` igual ao de uma skill.
 - [ ] Não há skill/agente com **função equivalente** já no repo (`grep -ril "<tema>" skills/ agents/`); se houver, estenda a existente ou diferencie a `description`.
 
+## Embasamento (orientação completa)
+- [ ] `README.md` é real (o que é, gatilhos, como usar por plataforma, exemplo) — não templado.
+- [ ] Corpo do `SKILL.md` tem método/quando usar/exemplos (não só descrição).
+- [ ] Material de apoio citado existe de fato (examples/, templates/, checklists/, reference/).
+- [ ] Nenhum link markdown relativo aponta para arquivo inexistente (`scripts/check-links.py`).
+- [ ] Onde falta dado proprietário, há `TODO:` explícito (não dado inventado).
+
 ## Automático
 - [ ] `python3 scripts/validate-skills.py --strict` → sem erros.
+- [ ] `python3 scripts/check-links.py` → zero links quebrados.
 - [ ] `python3 scripts/validate-agents.py` → sem erros.
 - [ ] `python3 scripts/generate-registry.py` → `registry.json` atualizado (descrições não vazias).
 - [ ] `python3 scripts/export-adapters.py --dry-run` → sem erros.
