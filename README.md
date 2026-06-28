@@ -74,20 +74,77 @@ python3 scripts/export-adapters.py
 Por plataforma (Claude.ai, OpenAI, Gemini, Cursor, Copilot, Codex, Manus):
 ver [docs/USAGE.md](docs/USAGE.md) e [docs/INTEGRATION.md](docs/INTEGRATION.md).
 
-## ➕ Criar uma skill nova
+## ➕ Incluir novas skills e novos agentes
+
+> Antes de criar/editar **qualquer** skill ou agente, consulte a regra-mãe
+> [`multiplatform-authoring`](skills/meta/multiplatform-authoring/SKILL.md).
+
+### 🚫 Regra inviolável: SEM duplicados
+
+**Nunca** inclua uma skill ou agente duplicado. Antes de criar, verifique:
 
 ```bash
-mkdir -p skills/<categoria>/<id>
+# 1. O id/nome já existe? (skills e agentes têm namespaces próprios, mas ids não se repetem)
+python3 scripts/generate-registry.py >/dev/null && \
+python3 -c "import json;d=json.load(open('registry.json'));\
+print('skills:', sorted(s['id'] for s in d['skills']));\
+print('agents:', sorted(a['id'] for a in d['agents']))"
+
+# 2. Já existe algo com função equivalente? (busque por palavras-chave)
+grep -ril "<tema/gatilho>" skills/ agents/
+```
+
+O bloqueio é **automático**: `validate-skills.py` e `validate-agents.py` recusam
+(exit 1) ids de skill repetidos, nomes de frontmatter repetidos, ids de agente
+repetidos e colisão de id entre agente e skill. O CI roda isso em todo PR.
+Se a função já existe, **estenda/ajuste a skill existente** em vez de criar outra;
+se o escopo é de fato diferente, **diferencie na `description`** declarando a
+fronteira ("Não usar para X (use `outra-skill`)").
+
+### Nova SKILL
+
+```bash
+mkdir -p skills/<categoria>/<id>            # categoria: core|content|frontend|engineering|tools|process|meta
 cp templates/SKILL-TEMPLATE.md skills/<categoria>/<id>/SKILL.md
 cp templates/skill.json        skills/<categoria>/<id>/skill.json
-# edite, depois:
-python3 scripts/validate-skills.py --skill <categoria>/<id>
+# edite: name (==<id>), description (padrão de gatilhos + fronteira), corpo e metadados; crie README.md
+python3 scripts/validate-skills.py --strict
 python3 scripts/generate-registry.py
 ```
 
-Antes de criar/editar **qualquer** skill ou agente, consulte a regra-mãe
-[`multiplatform-authoring`](skills/meta/multiplatform-authoring/SKILL.md). Guia de
-contribuição: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
+### Novo AGENTE
+
+```bash
+mkdir -p agents/<id>
+cp templates/AGENT-TEMPLATE.md agents/<id>/AGENT.md
+cp templates/agent.json        agents/<id>/agent.json
+# edite frontmatter (name==<id>, description com fronteira, tools, model), agent.json (linkedSkills, platforms), README.md
+# (opcional) bundle de apoio: reference/ (núcleo canônico), examples/, docs/, schemas/, platforms/, run_agent.py
+python3 scripts/validate-agents.py
+python3 scripts/generate-registry.py
+```
+
+Detalhes: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) ·
+formato de agente: [agent-format](skills/meta/multiplatform-authoring/references/agent-format.md).
+
+## 🛫 Invocar um agente/skill em cada novo projeto
+
+Para usar um agente (ex.: `buscador-sgj`) ou skill dentro de outro projeto:
+
+```bash
+# Instala no projeto-alvo (.claude/skills, .claude/agents, .cursor/rules)
+./scripts/install-into-project.sh --agent buscador-sgj --target ../meu-projeto
+./scripts/install-into-project.sh --skill credit-risk-analysis --target ../meu-projeto
+./scripts/install-into-project.sh --all --target ../meu-projeto     # tudo
+
+# Ou rode o agente via API (provider-agnóstico), a partir do núcleo canônico
+pip install -r agents/buscador-sgj/requirements.txt
+python agents/buscador-sgj/run_agent.py --provider anthropic \
+  --input agents/buscador-sgj/examples/processo_exemplo.json
+```
+
+Por plataforma (Claude.ai, OpenAI, Gemini, Cursor, Lovable, Manus), cada agente
+traz um guia em `agents/<id>/platforms/`. Mapa geral: [docs/MULTIPLATFORM.md](docs/MULTIPLATFORM.md).
 
 ## 🔐 Segurança
 

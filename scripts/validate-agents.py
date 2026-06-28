@@ -16,6 +16,7 @@ from _common import (  # noqa: E402
     GREEN, RED, BLUE, NC,
     NAME_RE, FRONTMATTER_MAX,
     parse_frontmatter, frontmatter_block, find_agent_dirs, find_skill_dirs,
+    duplicates,
 )
 
 
@@ -85,6 +86,18 @@ def main():
             total += len(errs)
         else:
             print(f"{GREEN}✓  {p.name}{NC}")
+
+    # ── Duplicate guard (regra inviolável: sem duplicados) ──
+    dup_ids = duplicates([p.name for p in paths])
+    if dup_ids:
+        print(f"\n{RED}❌ Agent IDs duplicados (proibido): {dup_ids}{NC}")
+        total += len(dup_ids)
+    collide = sorted(set(p.name for p in paths) & known)
+    if collide:
+        print(f"\n{RED}❌ IDs de agente colidem com IDs de skill (proibido): {collide}{NC}")
+        print("   Use nomes distintos (ex.: 'credit-risk-analyst' (agente) vs 'credit-risk-analysis' (skill)).")
+        total += len(collide)
+
     print()
     if total == 0:
         print(f"{GREEN}✅ All agents valid!{NC}\n")

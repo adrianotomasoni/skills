@@ -31,6 +31,12 @@
 - [ ] `agent.json` com `linkedSkills` e bloco `platforms`.
 - [ ] Skills vinculadas existem no repo.
 
+## Sem duplicados (inviolável)
+- [ ] Não existe outra skill/agente com o mesmo `id` (nome de pasta).
+- [ ] Não existe outra com o mesmo `name` no frontmatter.
+- [ ] Nenhum agente tem `id` igual ao de uma skill.
+- [ ] Não há skill/agente com **função equivalente** já no repo (`grep -ril "<tema>" skills/ agents/`); se houver, estenda a existente ou diferencie a `description`.
+
 ## Automático
 - [ ] `python3 scripts/validate-skills.py --strict` → sem erros.
 - [ ] `python3 scripts/validate-agents.py` → sem erros.

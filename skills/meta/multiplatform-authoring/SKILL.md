@@ -90,8 +90,14 @@ completa em `references/platform-matrix.md`. A exportação é automatizada por
 ## Administração & Enforcement
 
 - **Fonte da verdade:** este repo no GitHub. Todas as plataformas derivam dele.
+- **🚫 Sem duplicados (inviolável):** nunca inclua skill/agente com id ou nome já
+  existente, nem com função equivalente a uma já presente. Antes de criar, busque
+  (`grep -ril "<tema>" skills/ agents/`) e cheque o `registry.json`. Se já existe,
+  estenda a existente; se o escopo difere, diferencie na `description` (fronteira
+  "Não usar para X"). `validate-skills.py`/`validate-agents.py` recusam (exit 1)
+  ids/nomes repetidos e colisão de id entre agente e skill.
 - **Enforcement automático:** `validate-skills.py` + `.github/workflows/validate.yml`
-  recusam skills/agentes fora do contrato (frontmatter, naming, 1024 chars, categoria).
+  recusam skills/agentes fora do contrato (frontmatter, naming, 1024 chars, categoria, duplicados).
 - **Distribuição:** `export-adapters.py` gera as versões por plataforma em `dist/`;
   `sync-*.sh` publica nos destinos locais.
 - **Evolução desta regra:** mudou o contrato? Atualize esta SKILL.md, os

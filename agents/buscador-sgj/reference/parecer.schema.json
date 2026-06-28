@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://traderisk/sgj-agent/parecer.schema.json",
+  "title": "ParecerSGJ",
+  "description": "Parecer comercial-juridico de seguro garantia judicial por processo.",
+  "type": "object",
+  "required": [
+    "numero_cnj", "tomador", "status_comercial", "esfera", "fase",
+    "gatilho", "produto_sugerido", "base_legal", "urgencia", "garantia_atual", "pitch"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "numero_cnj": { "type": "string", "description": "Numero CNJ exatamente como no banco." },
+    "tomador": {
+      "type": "object",
+      "required": ["razao_social", "cnpj", "polo"],
+      "additionalProperties": false,
+      "properties": {
+        "razao_social": { "type": "string" },
+        "cnpj": { "type": "string" },
+        "polo": { "type": "string", "enum": ["passivo", "ativo", "ambos", "indeterminado"] }
+      }
+    },
+    "tribunal": { "type": "string" },
+    "status_comercial": {
+      "type": "string",
+      "enum": ["oportunidade", "substituicao", "renovacao", "monitorar", "fora_escopo", "encerrado", "excluido"]
+    },
+    "esfera": { "type": "string", "enum": ["trabalhista", "fiscal", "civel", "indefinido"] },
+    "fase": {
+      "type": "string",
+      "enum": ["conhecimento", "sentenca", "recursal", "liquidacao", "execucao",
+        "cumprimento_sentenca", "embargos_execucao", "tutela_urgencia", "agravo_instrumento",
+        "agravo_peticao", "suspenso", "encerrado", "indefinido"]
+    },
+    "gatilho": {
+      "type": "object",
+      "required": ["evento", "descricao"],
+      "additionalProperties": false,
+      "properties": {
+        "evento": { "type": "string" },
+        "descricao": { "type": "string", "description": "Descricao do gatilho em 1 linha." }
+      }
+    },
+    "produto_sugerido": { "type": "string" },
+    "base_legal": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Normas do quadro normativo. Nunca inventar."
+    },
+    "urgencia": {
+      "type": "object",
+      "required": ["nivel", "motivo"],
+      "additionalProperties": false,
+      "properties": {
+        "nivel": { "type": "string", "enum": ["critica", "alta", "media", "baixa"] },
+        "motivo": { "type": "string" }
+      }
+    },
+    "valor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "valor_a_garantir": { "type": ["number", "null"] },
+        "fonte_valor": { "type": ["string", "null"], "enum": ["execucao", "condenacao", "causa", "estimado", null] },
+        "valor_causa": { "type": ["number", "null"] },
+        "valor_execucao": { "type": ["number", "null"] },
+        "acrescimo_30_pct": { "type": "boolean" }
+      }
+    },
+    "garantia_atual": {
+      "type": "object",
+      "required": ["nivel_garantia", "e_traderisk"],
+      "additionalProperties": false,
+      "properties": {
+        "nivel_garantia": { "type": "string" },
+        "e_traderisk": { "type": "boolean" }
+      }
+    },
+    "pitch": { "type": "string", "description": "1-2 frases de abordagem para o corretor." },
+    "ressalva": { "type": ["string", "null"], "description": "Limites juridicos. Ex.: STJ Tema 378/1263 no fiscal." },
+    "score_v3": { "type": ["number", "null"] }
+  }
+}

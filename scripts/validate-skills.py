@@ -18,7 +18,7 @@ from _common import (  # noqa: E402
     GREEN, YELLOW, RED, BLUE, NC,
     VALID_CATEGORIES, VALID_STATUSES, VALID_TYPES, PLATFORMS,
     NAME_RE, FRONTMATTER_MAX,
-    parse_frontmatter, frontmatter_block, find_skill_dirs,
+    parse_frontmatter, frontmatter_block, find_skill_dirs, duplicates,
 )
 
 REQUIRED_FILES = ['SKILL.md', 'README.md', 'skill.json']
@@ -114,6 +114,28 @@ def main():
             total += len(errs)
         else:
             print(f"{GREEN}✓  {rel}{NC}")
+
+    # ── Duplicate guard (regra inviolável: sem duplicados) ──
+    if not args.skill:
+        all_dirs = find_skill_dirs(skills_root)
+        dup_ids = duplicates([d.name for d in all_dirs])
+        if dup_ids:
+            print(f"\n{RED}❌ Skill IDs duplicados (proibido):{NC}")
+            for sid, c in sorted(dup_ids.items()):
+                locs = [str(d.relative_to(skills_root)) for d in all_dirs if d.name == sid]
+                print(f"   • '{sid}' aparece {c}x: {locs}")
+            total += len(dup_ids)
+        names = []
+        for d in all_dirs:
+            f, _, _ = parse_frontmatter((d / 'SKILL.md').read_text(encoding='utf-8'))
+            if f and f.get('name'):
+                names.append(f['name'])
+        dup_names = duplicates(names)
+        if dup_names:
+            print(f"\n{RED}❌ Nomes de skill duplicados no frontmatter:{NC}")
+            for n, c in sorted(dup_names.items()):
+                print(f"   • '{n}' aparece {c}x")
+            total += len(dup_names)
 
     print()
     if total == 0:

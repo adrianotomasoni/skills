@@ -1,11 +1,11 @@
 {
   "version": "2.0.0",
-  "lastUpdated": "2026-06-28T15:38:11Z",
+  "lastUpdated": "2026-06-28T15:46:43Z",
   "repository": "https://github.com/adrianotomasoni/skills",
   "maintainer": "adriano@traderisk.com.br",
   "counts": {
     "skills": 33,
-    "agents": 2
+    "agents": 3
   },
   "skills": [
     {
@@ -1011,6 +1011,52 @@
     }
   ],
   "agents": [
+    {
+      "id": "buscador-sgj",
+      "name": "Buscador de Oportunidades de Seguro Garantia Judicial",
+      "version": "1.0.0",
+      "status": "stable",
+      "description": "Caça oportunidades COMERCIAIS de seguro garantia judicial (trabalhista, fiscal, cível) a partir de dados já classificados pelo motor V3/V4 da TradeRisk, emitindo parecer comercial acionável. Use SEMPRE que houver: avaliar se um processo/carteira de um tomador é oportunidade de VENDA de SGJ, qualificar polo passivo, identificar gatilho processual (depósito recursal, execução trabalhista, execução fiscal PGFN, embargos CPC 919, cumprimento CPC 523, tutela CPC 300), emitir parecer por processo ou sumário por tomador, validar substituição/renovação de garantia, ou quando o usuário cola um nº CNJ/dump V3 e pergunta 'isso é oportunidade?'. Não usar para MONITORAR risco de apólice existente (use judicial-watcher) nem prospecção de Seguro de Crédito via RJ (use localiza-credor-rj).",
+      "path": "agents/buscador-sgj",
+      "file": "AGENT.md",
+      "tools": "Read, Grep, Glob, Bash, WebSearch",
+      "model": "inherit",
+      "linkedSkills": [
+        "judicial-monitoring"
+      ],
+      "platforms": {
+        "claude-code": {
+          "kind": "subagent",
+          "path": "~/.claude/agents/buscador-sgj.md",
+          "notes": "AGENT.md como subagent; copie reference/ junto se usar skill."
+        },
+        "claude": {
+          "kind": "project-instructions",
+          "notes": "Cole platforms/claude/CLAUDE.md nas instruções do Project e anexe reference/."
+        },
+        "openai": {
+          "kind": "assistant-or-custom-gpt",
+          "notes": "reference/system_prompt.md como system message; saída estruturada via parecer.schema.json. Ver platforms/openai/."
+        },
+        "gemini": {
+          "kind": "system-instruction",
+          "notes": "reference/system_prompt.md como system_instruction. Ver platforms/gemini/."
+        },
+        "cursor": {
+          "kind": "rules-or-mode",
+          "notes": "Exporte para .cursor/rules/buscador-sgj.mdc. Ver platforms/cursor/."
+        },
+        "lovable": {
+          "kind": "knowledge-plus-ui",
+          "notes": "system_prompt.md como Knowledge; ver platforms/lovable/."
+        },
+        "manus": {
+          "kind": "agent-config",
+          "notes": "system_prompt.md no campo de instruções do agente. Ver platforms/manus/."
+        }
+      },
+      "maintainer": "adriano@traderisk.com.br"
+    },
     {
       "id": "credit-risk-analyst",
       "name": "Analista de Risco de Crédito",

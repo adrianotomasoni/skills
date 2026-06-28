@@ -1,0 +1,41 @@
+{
+  "id": "buscador-sgj",
+  "name": "Buscador de Oportunidades de Seguro Garantia Judicial",
+  "version": "1.0.0",
+  "status": "stable",
+  "maintainer": "adriano@traderisk.com.br",
+  "linkedSkills": ["judicial-monitoring"],
+  "canonicalCore": "reference/system_prompt.md",
+  "outputSchema": "reference/parecer.schema.json",
+  "platforms": {
+    "claude-code": {
+      "kind": "subagent",
+      "path": "~/.claude/agents/buscador-sgj.md",
+      "notes": "AGENT.md como subagent; copie reference/ junto se usar skill."
+    },
+    "claude": {
+      "kind": "project-instructions",
+      "notes": "Cole platforms/claude/CLAUDE.md nas instruções do Project e anexe reference/."
+    },
+    "openai": {
+      "kind": "assistant-or-custom-gpt",
+      "notes": "reference/system_prompt.md como system message; saída estruturada via parecer.schema.json. Ver platforms/openai/."
+    },
+    "gemini": {
+      "kind": "system-instruction",
+      "notes": "reference/system_prompt.md como system_instruction. Ver platforms/gemini/."
+    },
+    "cursor": {
+      "kind": "rules-or-mode",
+      "notes": "Exporte para .cursor/rules/buscador-sgj.mdc. Ver platforms/cursor/."
+    },
+    "lovable": {
+      "kind": "knowledge-plus-ui",
+      "notes": "system_prompt.md como Knowledge; ver platforms/lovable/."
+    },
+    "manus": {
+      "kind": "agent-config",
+      "notes": "system_prompt.md no campo de instruções do agente. Ver platforms/manus/."
+    }
+  }
+}

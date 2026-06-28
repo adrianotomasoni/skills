@@ -64,6 +64,14 @@ def load_json(path: Path):
         return None, str(e)
 
 
+def duplicates(values):
+    """Return {value: count} for values that appear more than once."""
+    seen = {}
+    for v in values:
+        seen[v] = seen.get(v, 0) + 1
+    return {v: c for v, c in seen.items() if c > 1}
+
+
 def find_skill_dirs(skills_root: Path):
     """All <category>/<id> directories that contain a SKILL.md."""
     skills = []
