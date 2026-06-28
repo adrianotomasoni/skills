@@ -82,6 +82,8 @@ def main():
     ap = argparse.ArgumentParser(description='Generate registry.json (2.0.0)')
     ap.add_argument('--summary', action='store_true')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--check', action='store_true',
+                    help='Compare against registry.json ignoring lastUpdated; exit 1 if stale (CI).')
     args = ap.parse_args()
 
     repo_root = Path(__file__).parent.parent
@@ -114,6 +116,24 @@ def main():
         'agents': sorted(agents, key=lambda x: x['id']),
     }
     output = json.dumps(registry, ensure_ascii=False, indent=2)
+
+    if args.check:
+        # Compare meaningful content (ignore lastUpdated, which changes every run).
+        def normalize(d):
+            d = dict(d)
+            d.pop('lastUpdated', None)
+            return d
+        try:
+            existing = json.loads(registry_path.read_text(encoding='utf-8'))
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"{YELLOW}❌ registry.json ausente/inválido: {e}{NC}")
+            sys.exit(1)
+        if normalize(existing) == normalize(registry):
+            print(f"{GREEN}✅ registry.json up to date ({len(skills)} skills, {len(agents)} agents).{NC}")
+            sys.exit(0)
+        print(f"{YELLOW}❌ registry.json stale. Run: python scripts/generate-registry.py{NC}")
+        print(f"   existing counts: {existing.get('counts')} | generated: {registry['counts']}")
+        sys.exit(1)
 
     if args.dry_run:
         print(f"\n{YELLOW}--- DRY RUN ---{NC}\n")

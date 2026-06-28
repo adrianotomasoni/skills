@@ -43,10 +43,4 @@ jobs:
         run: python scripts/export-adapters.py --dry-run
 
       - name: Check registry.json is up to date
-        run: |
-          python scripts/generate-registry.py
-          if ! git diff --quiet -- registry.json; then
-            echo "::error::registry.json is stale. Run: python scripts/generate-registry.py and commit."
-            git diff -- registry.json
-            exit 1
-          fi
+        run: python scripts/generate-registry.py --check
