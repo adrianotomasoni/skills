@@ -1,0 +1,21 @@
+{
+  "id": "writing-skills",
+  "name": "writing-skills",
+  "version": "1.0.0",
+  "category": "process",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["skills", "authoring", "documentation", "meta", "process"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

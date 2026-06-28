@@ -1,0 +1,21 @@
+{
+  "id": "subagent-driven-development",
+  "name": "subagent-driven-development",
+  "version": "1.0.0",
+  "category": "process",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["subagents", "orchestration", "workflow", "execution"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

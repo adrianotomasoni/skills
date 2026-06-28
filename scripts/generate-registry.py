@@ -1,190 +1,157 @@
 #!/usr/bin/env python3
 """
 generate-registry.py
-Generates registry.json from skill metadata found in SKILL.md files.
+Generates registry.json (schema 2.0.0) from canonical skills + agents.
+Reads name/description from SKILL.md frontmatter and metadata from skill.json.
 """
 
-import json
-import os
-import re
 import sys
+import json
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ANSI colors
-GREEN = '\033[0;32m'
-YELLOW = '\033[1;33m'
-BLUE = '\033[0;34m'
-NC = '\033[0m'
+sys.path.insert(0, str(Path(__file__).parent))
+from _common import (  # noqa: E402
+    GREEN, YELLOW, BLUE, NC,
+    parse_frontmatter, find_skill_dirs, find_agent_dirs,
+)
+
+REPO_URL = 'https://github.com/adrianotomasoni/skills'
+MAINTAINER = 'adriano@traderisk.com.br'
 
 
-def parse_skill_metadata(skill_path: Path) -> dict | None:
-    """Extract metadata from a SKILL.md file."""
-    skill_md = skill_path / 'SKILL.md'
-    if not skill_md.exists():
-        return None
-
-    content = skill_md.read_text(encoding='utf-8')
-    metadata = {}
-
-    # Parse header fields (# Key: Value)
-    for line in content.splitlines():
-        line = line.strip()
-        if not line.startswith('#'):
-            break
-        if ':' in line:
-            key = line.lstrip('#').split(':')[0].strip().lower()
-            value = line.split(':', 1)[1].strip()
-            metadata[key] = value
-
-    if not metadata.get('id'):
-        return None
-
-    # Parse tags from README.md if available
-    tags = []
-    readme = skill_path / 'README.md'
-    if readme.exists():
-        readme_content = readme.read_text(encoding='utf-8')
-        tag_match = re.search(r'## Tags\s*\n\s*`([^`]+)`', readme_content)
-        if tag_match:
-            tags = [t.strip() for t in tag_match.group(1).split('`') if t.strip()]
-        # Also look for inline tags like `tag1` `tag2`
-        tag_line = re.search(r'## Tags\s*\n(.+)', readme_content)
-        if tag_line:
-            inline_tags = re.findall(r'`([^`]+)`', tag_line.group(1))
-            tags = list(set(tags + inline_tags))
-
-    # Get last modified from git or file mtime
-    last_modified = datetime.now().strftime('%Y-%m-%d')
-
-    # Build skill entry
-    category = metadata.get('category', 'unknown')
-    skill_id = metadata.get('id', skill_path.name)
-    relative_path = f"skills/{category}/{skill_path.name}"
-
+def skill_entry(skill_path: Path, skills_root: Path):
+    text = (skill_path / 'SKILL.md').read_text(encoding='utf-8')
+    fields, _, _ = parse_frontmatter(text)
+    fields = fields or {}
+    meta = {}
+    sj = skill_path / 'skill.json'
+    if sj.exists():
+        try:
+            meta = json.loads(sj.read_text(encoding='utf-8'))
+        except json.JSONDecodeError:
+            meta = {}
+    skill_id = fields.get('name') or meta.get('id') or skill_path.name
     return {
         'id': skill_id,
-        'category': category,
-        'name': _extract_name(content) or skill_id,
-        'version': metadata.get('version', '1.0.0'),
-        'description': _extract_description(content),
-        'path': relative_path,
+        'category': skill_path.parent.name,
+        'name': meta.get('name', skill_id),
+        'version': meta.get('version', '1.0.0'),
+        'status': meta.get('status', 'stable'),
+        'type': meta.get('type', 'technique'),
+        'description': fields.get('description', ''),
+        'path': str(skill_path.relative_to(skills_root.parent)),
         'file': 'SKILL.md',
-        'status': metadata.get('status', 'stable'),
-        'tags': sorted(tags),
-        'maintainer': _extract_maintainer(content),
-        'lastModified': last_modified,
+        'tags': meta.get('tags', []),
+        'dependencies': meta.get('dependencies', []),
+        'platforms': meta.get('platforms', {}),
+        'maintainer': meta.get('maintainer', MAINTAINER),
     }
 
 
-def _extract_name(content: str) -> str:
-    """Extract skill name from SKILL.md content."""
-    for line in content.splitlines():
-        if line.startswith('# Skill:'):
-            return line.split(':', 1)[1].strip()
-    return ''
-
-
-def _extract_description(content: str) -> str:
-    """Extract description from Objetivo section."""
-    lines = content.splitlines()
-    in_objetivo = False
-    for line in lines:
-        if line.startswith('## Objetivo'):
-            in_objetivo = True
-            continue
-        if in_objetivo:
-            line = line.strip()
-            if line and not line.startswith('#'):
-                # Remove markdown formatting
-                line = re.sub(r'\*+', '', line)
-                return line[:120]
-            elif line.startswith('#'):
-                break
-    return ''
-
-
-def _extract_maintainer(content: str) -> str:
-    """Extract maintainer email from SKILL.md footer."""
-    match = re.search(r'Maintainer\*\*:\s*([^\s|]+)', content)
-    if match:
-        return match.group(1).strip()
-    return 'adriano@traderisk.com.br'
-
-
-def find_skills(skills_root: Path) -> list[Path]:
-    """Find all skill directories."""
-    skills = []
-    for category_dir in sorted(skills_root.iterdir()):
-        if not category_dir.is_dir() or category_dir.name.startswith('.'):
-            continue
-        for skill_dir in sorted(category_dir.iterdir()):
-            if not skill_dir.is_dir() or skill_dir.name.startswith('.'):
-                continue
-            skills.append(skill_dir)
-    return skills
+def agent_entry(agent_path: Path, repo_root: Path):
+    text = (agent_path / 'AGENT.md').read_text(encoding='utf-8')
+    fields, _, _ = parse_frontmatter(text)
+    fields = fields or {}
+    meta = {}
+    aj = agent_path / 'agent.json'
+    if aj.exists():
+        try:
+            meta = json.loads(aj.read_text(encoding='utf-8'))
+        except json.JSONDecodeError:
+            meta = {}
+    agent_id = fields.get('name') or meta.get('id') or agent_path.name
+    return {
+        'id': agent_id,
+        'name': meta.get('name', agent_id),
+        'version': meta.get('version', '1.0.0'),
+        'status': meta.get('status', 'stable'),
+        'description': fields.get('description', ''),
+        'path': str(agent_path.relative_to(repo_root)),
+        'file': 'AGENT.md',
+        'tools': fields.get('tools', ''),
+        'model': fields.get('model', 'inherit'),
+        'linkedSkills': meta.get('linkedSkills', []),
+        'platforms': meta.get('platforms', {}),
+        'maintainer': meta.get('maintainer', MAINTAINER),
+    }
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate registry.json from skill metadata')
-    parser.add_argument('--summary', action='store_true', help='Print summary after generating')
-    parser.add_argument('--dry-run', action='store_true', help='Print output without writing')
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser(description='Generate registry.json (2.0.0)')
+    ap.add_argument('--summary', action='store_true')
+    ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--check', action='store_true',
+                    help='Compare against registry.json ignoring lastUpdated; exit 1 if stale (CI).')
+    args = ap.parse_args()
 
     repo_root = Path(__file__).parent.parent
     skills_root = repo_root / 'skills'
+    agents_root = repo_root / 'agents'
     registry_path = repo_root / 'registry.json'
 
-    if not skills_root.exists():
-        print(f"❌ Skills directory not found: {skills_root}")
-        sys.exit(1)
+    print(f"\n{BLUE}📦 Generating registry.json (2.0.0)...{NC}\n")
 
-    print(f"\n{BLUE}📦 Generating registry.json...{NC}\n")
+    skills = []
+    for p in find_skill_dirs(skills_root):
+        e = skill_entry(p, skills_root)
+        skills.append(e)
+        warn = '' if e['description'] else f" {YELLOW}(empty description!){NC}"
+        print(f"{GREEN}✓{NC}  skill: {e['id']} ({e['category']}) v{e['version']}{warn}")
 
-    skill_entries = []
-    skill_paths = find_skills(skills_root)
-
-    for skill_path in skill_paths:
-        entry = parse_skill_metadata(skill_path)
-        if entry:
-            skill_entries.append(entry)
-            print(f"{GREEN}✓{NC}  {entry['id']} ({entry['category']}) v{entry['version']}")
-        else:
-            print(f"{YELLOW}⊘{NC}  {skill_path.name} – no SKILL.md metadata, skipped")
+    agents = []
+    for p in find_agent_dirs(agents_root):
+        e = agent_entry(p, repo_root)
+        agents.append(e)
+        print(f"{GREEN}✓{NC}  agent: {e['id']} v{e['version']}")
 
     registry = {
-        'version': '1.0.0',
+        'version': '2.0.0',
         'lastUpdated': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-        'repository': 'https://github.com/adrianotomasoni/skills',
-        'maintainer': 'adriano@traderisk.com.br',
-        'skills': skill_entries,
+        'repository': REPO_URL,
+        'maintainer': MAINTAINER,
+        'counts': {'skills': len(skills), 'agents': len(agents)},
+        'skills': sorted(skills, key=lambda x: (x['category'], x['id'])),
+        'agents': sorted(agents, key=lambda x: x['id']),
     }
-
     output = json.dumps(registry, ensure_ascii=False, indent=2)
 
+    if args.check:
+        # Compare meaningful content (ignore lastUpdated, which changes every run).
+        def normalize(d):
+            d = dict(d)
+            d.pop('lastUpdated', None)
+            return d
+        try:
+            existing = json.loads(registry_path.read_text(encoding='utf-8'))
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"{YELLOW}❌ registry.json ausente/inválido: {e}{NC}")
+            sys.exit(1)
+        if normalize(existing) == normalize(registry):
+            print(f"{GREEN}✅ registry.json up to date ({len(skills)} skills, {len(agents)} agents).{NC}")
+            sys.exit(0)
+        print(f"{YELLOW}❌ registry.json stale. Run: python scripts/generate-registry.py{NC}")
+        print(f"   existing counts: {existing.get('counts')} | generated: {registry['counts']}")
+        sys.exit(1)
+
     if args.dry_run:
-        print(f"\n{YELLOW}--- DRY RUN OUTPUT ---{NC}\n")
+        print(f"\n{YELLOW}--- DRY RUN ---{NC}\n")
         print(output)
     else:
         registry_path.write_text(output + '\n', encoding='utf-8')
-        print(f"\n{GREEN}✅ registry.json updated with {len(skill_entries)} skill(s){NC}")
+        print(f"\n{GREEN}✅ registry.json: {len(skills)} skills, {len(agents)} agents{NC}")
 
     if args.summary:
-        print(f"\n{BLUE}📊 Summary:{NC}")
-        categories: dict[str, int] = {}
-        statuses: dict[str, int] = {}
-        for entry in skill_entries:
-            categories[entry['category']] = categories.get(entry['category'], 0) + 1
-            statuses[entry['status']] = statuses.get(entry['status'], 0) + 1
-
-        print("\n  By category:")
-        for cat, count in sorted(categories.items()):
-            print(f"    {cat}: {count}")
-
-        print("\n  By status:")
-        for status, count in sorted(statuses.items()):
-            print(f"    {status}: {count}")
+        cats = {}
+        for s in skills:
+            cats[s['category']] = cats.get(s['category'], 0) + 1
+        print(f"\n{BLUE}📊 By category:{NC}")
+        for c, n in sorted(cats.items()):
+            print(f"    {c}: {n}")
+        empty = [s['id'] for s in skills if not s['description']]
+        if empty:
+            print(f"\n{YELLOW}⚠ skills with empty description: {empty}{NC}")
         print()
 
 

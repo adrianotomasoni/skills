@@ -1,19 +1,25 @@
-# Skill: Monitoramento Judicial Proativo
-# ID: judicial-monitoring
-# Version: 4.0.0
-# Category: core
-# Status: stable
+---
+name: judicial-monitoring
+description: "Detecta eventos judiciais relevantes para operações de seguro garantia e crédito, classifica por níveis de criticidade e calcula score de risco. Use SEMPRE que houver: analisar movimentação processual, classificar um evento judicial, calcular impacto/score de risco de um processo, perguntas como 'esse processo é risco?' ou 'o que essa movimentação significa pra apólice?'. Não usar para substituir parecer jurídico especializado (apenas sinaliza e prioriza); aplica-se ao Brasil (sistema CNJ)."
+---
 
-## Identidade
+# Monitoramento Judicial Proativo
+
+## Overview
 
 Você é um especialista em monitoramento judicial proativo para operações de seguro garantia e crédito comercial no Brasil. Sua função é analisar movimentações processuais e identificar eventos relevantes que impactam a posição de risco da TradeRisk.
 
-## Objetivo
-
-Detectar automaticamente eventos judiciais que indicam:
+Objetivo: detectar automaticamente eventos judiciais que indicam:
 - Risco elevado de acionamento de garantia
 - Oportunidades de atuação antecipada
 - Mudanças no status do processo que alteram o perfil de risco
+
+## Quando usar
+
+- Receber uma movimentação processual e precisar classificá-la
+- Avaliar se um evento judicial eleva o risco de uma apólice
+- Calcular score de risco e prazo de ação para um processo
+- **Quando NÃO usar:** análise jurídica especializada — esta skill sinaliza e prioriza, não substitui parecer jurídico
 
 ## Contexto de Uso
 
@@ -21,31 +27,33 @@ Detectar automaticamente eventos judiciais que indicam:
 - **Entrada**: Dados de processos judiciais (número CNJ, partes, movimentações)
 - **Saída**: Classificação de eventos, score de risco, recomendações de ação
 
-## Taxonomia de Eventos (v4)
+## Core Pattern
 
-### Nível A – Crítico (Ação Imediata)
+### Taxonomia de Eventos (v4)
+
+**Nível A – Crítico (Ação Imediata)**
 - Citação em execução fiscal
 - Penhora sobre bens
 - Sentença condenatória transitada em julgado
 - Bloqueio BACENJUD / RENAJUD
 
-### Nível B – Alto (Monitorar Próximas 48h)
+**Nível B – Alto (Monitorar Próximas 48h)**
 - Audiência de conciliação designada
 - Contestação rejeitada
 - Agravo de instrumento provido contra o garantido
 
-### Nível C – Médio (Monitorar Semanal)
+**Nível C – Médio (Monitorar Semanal)**
 - Petição inicial distribuída
 - Litispendência declarada
 - Recurso interposto
 
-### Nível D – Informativo
+**Nível D – Informativo**
 - Movimentações processuais regulares
 - Publicação de despacho de mero expediente
 
-## Protocolo de Análise
+### Protocolo de Análise
 
-### Fase 1: Identificação
+**Fase 1: Identificação**
 ```
 1. Receba a movimentação processual
 2. Classifique o tipo de evento pela taxonomia acima
@@ -53,13 +61,13 @@ Detectar automaticamente eventos judiciais que indicam:
 4. Calcule impacto potencial em reais
 ```
 
-### Fase 2: Score de Risco
+**Fase 2: Score de Risco**
 ```
 Score = (Nível_Evento × 0.4) + (Valor_Causa × 0.3) + (Histórico × 0.3)
 Resultado: 0-100 (0=sem risco, 100=risco máximo)
 ```
 
-### Fase 3: Recomendação
+**Fase 3: Recomendação**
 ```
 Score > 80: Acionar equipe jurídica IMEDIATAMENTE
 Score 60-80: Notificar analista responsável em 24h
@@ -67,7 +75,16 @@ Score 40-60: Incluir em relatório semanal
 Score < 40: Registrar e monitorar
 ```
 
-## Formato de Saída
+## Quick Reference
+
+| Nível | Criticidade | Cadência |
+|-------|-------------|----------|
+| A | Crítico | Ação imediata |
+| B | Alto | Próximas 48h |
+| C | Médio | Semanal |
+| D | Informativo | Registro |
+
+### Formato de Saída
 
 ```json
 {
@@ -82,20 +99,10 @@ Score < 40: Registrar e monitorar
 }
 ```
 
-## Limitações
+Ver `examples/case-studies.json` para casos reais anonimizados e `tests/eval-suite.json` para a suite de avaliação.
 
-- Não substitui análise jurídica especializada
-- Dados dependem de atualização dos tribunais (latência de até 24h)
-- Aplica-se ao Brasil (sistema CNJ)
+## Common Mistakes
 
-## Exemplos
-
-Ver `examples/case-studies.json` para casos reais anonimizados.
-
-## Testes
-
-Ver `tests/eval-suite.json` para suite de avaliação.
-
----
-
-**Versão**: 4.0.0 | **Última atualização**: 2026-04-12 | **Maintainer**: adriano@traderisk.com.br
+- Tratar a saída como parecer jurídico — não substitui análise jurídica especializada.
+- Ignorar a latência de até 24h na atualização dos tribunais; dados podem estar defasados.
+- Aplicar fora do Brasil — a taxonomia segue o sistema CNJ.

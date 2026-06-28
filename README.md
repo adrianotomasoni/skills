@@ -1,294 +1,160 @@
-# TradeRisk Skills Repository
+# 🧠 Skills & Agents — Repositório-Mãe Multiplataforma
 
-Um repositório centralizado para todas as skills customizadas da TradeRisk, organizadas para uso em Claude, Cursor, Manus e outras plataformas de IA.
+Repositório **central** de todas as skills e agentes de IA. Uma fonte canônica,
+usável em **Claude, Claude Code, OpenAI (ChatGPT / Custom GPTs / Assistants),
+Google Gemini / Gemini CLI, Cursor, GitHub Copilot, Codex e Manus**.
 
-## 📁 Estrutura do Repositório
+> **Princípio:** toda skill e todo agente nascem multiplataforma. Você escreve
+> uma vez no formato canônico; um adaptador exporta para cada plataforma. A regra
+> que governa isso é a skill [`multiplatform-authoring`](skills/meta/multiplatform-authoring/SKILL.md).
+
+## 📊 Inventário
+
+**33 skills · 2 agentes · 7 categorias** (índice completo em [`registry.json`](registry.json)).
+
+| Categoria | Conteúdo |
+|---|---|
+| `meta` | **`multiplatform-authoring`** — a regra-mãe de autoria/governança |
+| `core` | Negócio: `credit-risk-analysis`, `judicial-monitoring`, `licitaradar`, `seo-audit-traderisk`, `localiza-credor-rj`, `auditoria-de-seo-on-page` |
+| `content` | `skill-traderisk-content-writer`, `internal-comms` |
+| `frontend` | `traderisk-frontend-design`, `apresentacao-alto-impacto`, `frontend-design` |
+| `engineering` | `api-design-restful`, `code-review-checklist`, `doc-coauthoring` |
+| `tools` | `file-reading`, `pdf-operations`, `mcp-builder` |
+| `process` | Engenharia de processo (estilo *superpowers*): `brainstorming`, `test-driven-development`, `systematic-debugging`, `writing-skills`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `dispatching-parallel-agents`, `using-git-worktrees`, `using-superpowers`, `requesting-code-review`, `receiving-code-review`, `verification-before-completion`, `finishing-a-development-branch`, `frontend-design-process` |
+
+Catálogo descritivo completo (o que faz, gatilhos, como usar em cada plataforma):
+👉 **[docs/USAGE.md](docs/USAGE.md)**
+
+## 📁 Estrutura
 
 ```
 skills/
-├── README.md
-├── .gitignore
-├── registry.json                          # Índice master de todas as skills
-├── LICENSE
-│
-├── skills/
-│   ├── core/                              # Skills estratégicas de core business
-│   │   ├── judicial-monitoring/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── prompts/
-│   │   │   │   ├── fase-1-v4-unified.md
-│   │   │   │   ├── fase-1-v3-spec.md
-│   │   │   │   └── melhorias-motor-judicial-2026.md
-│   │   │   ├── examples/
-│   │   │   │   └── case-studies.json
-│   │   │   └── tests/
-│   │   │       └── eval-suite.json
-│   │   │
-│   │   ├── credit-risk-analysis/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── templates/
-│   │   │   │   ├── credit-assessment.md
-│   │   │   │   └── score-calculator.js
-│   │   │   └── examples/
-│   │   │       └── case-studies.json
-│   │   │
-│   │   ├── seo-audit-traderisk/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── templates/
-│   │   │   └── benchmarks.json
-│   │   │
-│   │   └── licitaradar/
-│   │       ├── SKILL.md
-│   │       ├── README.md
-│   │       ├── api-integration/
-│   │       │   ├── pncp-client.ts
-│   │       │   └── claude-classifier.ts
-│   │       └── examples/
-│   │
-│   ├── frontend/                           # Skills de design/frontend
-│   │   ├── traderisk-frontend-design/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── design-system/
-│   │   │   │   ├── colors.ts
-│   │   │   │   ├── typography.ts
-│   │   │   │   ├── components/
-│   │   │   │   └── patterns.md
-│   │   │   └── templates/
-│   │   │
-│   │   ├── apresentacao-alto-impacto/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   └── templates/
-│   │   │
-│   │   └── frontend-design/
-│   │       ├── SKILL.md
-│   │       ├── README.md
-│   │       └── design-patterns/
-│   │
-│   ├── content/                            # Skills de conteúdo/copywriting
-│   │   ├── skill-traderisk-content-writer/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── tone-voice.md
-│   │   │   ├── templates/
-│   │   │   └── examples/
-│   │   │
-│   │   └── internal-comms/
-│   │       ├── SKILL.md
-│   │       ├── README.md
-│   │       └── templates/
-│   │
-│   ├── engineering/                       # Skills técnicas/code
-│   │   ├── code-review-checklist/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── checklists/
-│   │   │   │   ├── react.md
-│   │   │   │   ├── typescript.md
-│   │   │   │   └── supabase.md
-│   │   │   └── examples/
-│   │   │
-│   │   ├── api-design-restful/
-│   │   │   ├── SKILL.md
-│   │   │   ├── README.md
-│   │   │   ├── standards/
-│   │   │   └── templates/
-│   │   │
-│   │   └── doc-coauthoring/
-│   │       ├── SKILL.md
-│   │       ├── README.md
-│   │       └── workflows/
-│   │
-│   └── tools/                              # Skills de ferramentas/automação
-│       ├── file-reading/
-│       ├── pdf-operations/
-│       └── mcp-builder/
-│
-├── docs/
-│   ├── USAGE.md                            # Como usar as skills
-│   ├── INTEGRATION.md                      # Integração em diferentes plataformas
-│   ├── CONTRIBUTING.md                     # Como contribuir
-│   └── ARCHITECTURE.md                     # Arquitetura e filosofia
-│
-├── scripts/
-│   ├── validate-skills.py                  # Validar todas as skills
-│   ├── generate-registry.py                # Gerar registry.json
-│   ├── sync-to-claude.sh                   # Script de sincronização
-│   └── test-skills.py                      # Testar skills
-│
-└── .github/
-    └── workflows/
-        ├── validate.yml                    # CI para validação
-        └── update-registry.yml             # CI para atualizar registry
+├── meta/          # governança (multiplatform-authoring)
+├── core/          # skills de negócio
+├── content/  frontend/  engineering/  tools/
+└── process/       # skills de processo (superpowers)
+agents/
+├── _template/
+├── credit-risk-analyst/    # → skill credit-risk-analysis
+└── judicial-watcher/       # → skill judicial-monitoring
+templates/         # SKILL-TEMPLATE.md, skill.json, AGENT-TEMPLATE.md, agent.json
+scripts/           # validate-skills, validate-agents, generate-registry, export-adapters, sync-*
+dist/              # adapters por plataforma (gerados, gitignored)
+docs/              # USAGE, MULTIPLATFORM, INTEGRATION, CONTRIBUTING, ARCHITECTURE
+registry.json      # índice master (schema 2.0.0)
 ```
 
-## 🚀 Como Usar Este Repositório
+## 🧩 Formato canônico (resumo)
 
-### 1. **Em Claude (claude.ai)**
-```
-1. Vá em Settings → Knowledge → Upload Files
-2. Faça upload de /skills/{categoria}/{skill}/SKILL.md
-3. Refira-se à skill pelo nome: @skill-name
-```
+Cada skill = pasta com:
+- **`SKILL.md`** — frontmatter YAML com **só** `name` + `description` (≤ 1024 chars) + corpo.
+- **`skill.json`** — metadados (`version`, `category`, `status`, `type`, `tags`, `platforms`…).
+- **`README.md`**.
 
-### 2. **Em Cursor**
-```
-1. Clone o repositório:
-   git clone https://github.com/adrianotomasoni/skills.git ~/.cursor/skills
+Detalhes e o porquê: [docs/MULTIPLATFORM.md](docs/MULTIPLATFORM.md) e a skill
+[`multiplatform-authoring`](skills/meta/multiplatform-authoring/SKILL.md).
 
-2. Configure no .cursor/rules.md:
-   {projeto} deve usar skills do repositório em ~/.cursor/skills
+## 🚀 Uso rápido
 
-3. Referencie na conversa: @skills/judicial-monitoring
-```
-
-### 3. **Em Manus (Local)**
-```
-1. Configure o caminho no manus.config.json:
-   {
-     "skillsPath": "~/projects/skills/skills"
-   }
-
-2. Use: @skill-judicial-monitoring
-```
-
-### 4. **No GitHub (Source of Truth)**
-```
-git clone https://github.com/adrianotomasoni/skills.git
-cd skills
-git checkout -b feature/improve-credit-risk
-# edite skills
-git commit -am "Improve credit risk skill"
-git push origin feature/improve-credit-risk
-# crie PR
-```
-
-## 📋 Registry.json (Índice Master)
-
-O arquivo `registry.json` funciona como um índice que lista TODAS as skills:
-
-```json
-{
-  "version": "1.0.0",
-  "lastUpdated": "2026-04-12T10:00:00Z",
-  "skills": [
-    {
-      "id": "judicial-monitoring",
-      "category": "core",
-      "name": "Monitoramento Judicial Proativo",
-      "version": "4.0.0",
-      "description": "Detecção de eventos e oportunidades em processos judiciais",
-      "path": "skills/core/judicial-monitoring",
-      "file": "SKILL.md",
-      "status": "stable",
-      "tags": ["judicial", "monitoring", "eventos", "v4"],
-      "dependencies": ["credit-risk-analysis"],
-      "maintainer": "adriano@traderisk.com.br",
-      "lastModified": "2026-04-12"
-    },
-    {
-      "id": "credit-risk-analysis",
-      "category": "core",
-      "name": "Análise de Risco de Crédito",
-      "version": "2.1.0",
-      "path": "skills/core/credit-risk-analysis",
-      "file": "SKILL.md",
-      "status": "stable",
-      "tags": ["credit", "risk", "analysis"],
-      "maintainer": "adriano@traderisk.com.br"
-    }
-    // ... mais skills
-  ]
-}
-```
-
-## 🔄 Fluxo de Versionamento
-
-Cada skill segue **semantic versioning** (MAJOR.MINOR.PATCH):
-
-- **MAJOR**: Mudanças quebra-compatibilidade ou novo approach
-- **MINOR**: Novas features mantendo compatibilidade
-- **PATCH**: Bug fixes
-
-Exemplo: `credit-risk-analysis` v2.1.0 → v2.2.0 (nova métrica adicionada)
-
-## ✅ Checklist para Adicionar uma Nova Skill
-
-- [ ] Criar diretório em `skills/{categoria}/{skill-id}/`
-- [ ] Escrever `SKILL.md` com descrição clara
-- [ ] Criar `README.md` com exemplos de uso
-- [ ] Adicionar exemplos em `examples/`
-- [ ] Adicionar testes/evals em `tests/` se aplicável
-- [ ] Atualizar `registry.json`
-- [ ] Criar branch feature e PR
-- [ ] Passar validação automática
-- [ ] Merge para main
-
-## 🛠️ Automação
-
-### Validar Todas as Skills
 ```bash
-python scripts/validate-skills.py
+# Validar tudo
+python3 scripts/validate-skills.py --strict
+python3 scripts/validate-agents.py
+
+# Regenerar o índice
+python3 scripts/generate-registry.py --summary
+
+# Exportar adapters por plataforma (dist/)
+python3 scripts/export-adapters.py
+
+# Instalar no Claude Code local
+./scripts/sync-to-claude.sh
 ```
 
-### Gerar Registry Automaticamente
+Por plataforma (Claude.ai, OpenAI, Gemini, Cursor, Copilot, Codex, Manus):
+ver [docs/USAGE.md](docs/USAGE.md) e [docs/INTEGRATION.md](docs/INTEGRATION.md).
+
+## ➕ Incluir novas skills e novos agentes
+
+> Antes de criar/editar **qualquer** skill ou agente, consulte a regra-mãe
+> [`multiplatform-authoring`](skills/meta/multiplatform-authoring/SKILL.md).
+
+### 🚫 Regra inviolável: SEM duplicados
+
+**Nunca** inclua uma skill ou agente duplicado. Antes de criar, verifique:
+
 ```bash
-python scripts/generate-registry.py
+# 1. O id/nome já existe? (skills e agentes têm namespaces próprios, mas ids não se repetem)
+python3 scripts/generate-registry.py >/dev/null && \
+python3 -c "import json;d=json.load(open('registry.json'));\
+print('skills:', sorted(s['id'] for s in d['skills']));\
+print('agents:', sorted(a['id'] for a in d['agents']))"
+
+# 2. Já existe algo com função equivalente? (busque por palavras-chave)
+grep -ril "<tema/gatilho>" skills/ agents/
 ```
 
-### Sincronizar com Claude
+O bloqueio é **automático**: `validate-skills.py` e `validate-agents.py` recusam
+(exit 1) ids de skill repetidos, nomes de frontmatter repetidos, ids de agente
+repetidos e colisão de id entre agente e skill. O CI roda isso em todo PR.
+Se a função já existe, **estenda/ajuste a skill existente** em vez de criar outra;
+se o escopo é de fato diferente, **diferencie na `description`** declarando a
+fronteira ("Não usar para X (use `outra-skill`)").
+
+### Nova SKILL
+
 ```bash
-./scripts/sync-to-claude.sh --api-key $CLAUDE_API_KEY
+mkdir -p skills/<categoria>/<id>            # categoria: core|content|frontend|engineering|tools|process|meta
+cp templates/SKILL-TEMPLATE.md skills/<categoria>/<id>/SKILL.md
+cp templates/skill.json        skills/<categoria>/<id>/skill.json
+# edite: name (==<id>), description (padrão de gatilhos + fronteira), corpo e metadados; crie README.md
+python3 scripts/validate-skills.py --strict
+python3 scripts/generate-registry.py
 ```
 
-## 📊 Status das Skills
+### Novo AGENTE
 
-| Skill | Versão | Status | Última Atualização |
-|-------|--------|--------|-------------------|
-| judicial-monitoring | 4.0.0 | ✅ Stable | 2026-04-12 |
-| credit-risk-analysis | 2.1.0 | ✅ Stable | 2026-04-08 |
-| seo-audit-traderisk | 1.2.0 | ✅ Stable | 2026-03-15 |
-| licitaradar | 1.0.0 | 🚀 Beta | 2026-04-10 |
-| traderisk-frontend-design | 3.1.0 | ✅ Stable | 2026-04-05 |
+```bash
+mkdir -p agents/<id>
+cp templates/AGENT-TEMPLATE.md agents/<id>/AGENT.md
+cp templates/agent.json        agents/<id>/agent.json
+# edite frontmatter (name==<id>, description com fronteira, tools, model), agent.json (linkedSkills, platforms), README.md
+# (opcional) bundle de apoio: reference/ (núcleo canônico), examples/, docs/, schemas/, platforms/, run_agent.py
+python3 scripts/validate-agents.py
+python3 scripts/generate-registry.py
+```
+
+Detalhes: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) ·
+formato de agente: [agent-format](skills/meta/multiplatform-authoring/references/agent-format.md).
+
+## 🛫 Invocar um agente/skill em cada novo projeto
+
+Para usar um agente (ex.: `buscador-sgj`) ou skill dentro de outro projeto:
+
+```bash
+# Instala no projeto-alvo (.claude/skills, .claude/agents, .cursor/rules)
+./scripts/install-into-project.sh --agent buscador-sgj --target ../meu-projeto
+./scripts/install-into-project.sh --skill credit-risk-analysis --target ../meu-projeto
+./scripts/install-into-project.sh --all --target ../meu-projeto     # tudo
+
+# Ou rode o agente via API (provider-agnóstico), a partir do núcleo canônico
+pip install -r agents/buscador-sgj/requirements.txt
+python agents/buscador-sgj/run_agent.py --provider anthropic \
+  --input agents/buscador-sgj/examples/processo_exemplo.json
+```
+
+Por plataforma (Claude.ai, OpenAI, Gemini, Cursor, Lovable, Manus), cada agente
+traz um guia em `agents/<id>/platforms/`. Mapa geral: [docs/MULTIPLATFORM.md](docs/MULTIPLATFORM.md).
 
 ## 🔐 Segurança
 
-- Nunca commite credentials (APIs, tokens)
-- Use `.gitignore` para arquivos sensíveis
-- Coloque secrets em `.env.example` (sem valores)
-- Valide antes de fazer push
-
-## 📝 Documentação
-
-- [USAGE.md](docs/USAGE.md) - Como usar as skills em cada plataforma
-- [INTEGRATION.md](docs/INTEGRATION.md) - Guia de integração
-- [CONTRIBUTING.md](docs/CONTRIBUTING.md) - Contribuir com novas skills
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Filosofia e design
-
-## 🤝 Contribuindo
-
-1. Fork o repositório
-2. Crie branch: `git checkout -b feature/skill-name`
-3. Faça commits claros
-4. Push: `git push origin feature/skill-name`
-5. Abra PR com descrição do que foi feito
+- Nunca commite credenciais/tokens. Use `.gitignore` e `.env.example`.
+- Valide antes do push; o CI bloqueia formato inválido.
 
 ## 📄 Licença
 
-MIT License - Veja [LICENSE](LICENSE) para detalhes
-
-## 📞 Contato
-
-- **Maintainer**: Adriano Tomasoni (@adriano.tomasoni)
-- **Email**: adriano@traderisk.com.br
-- **Issues**: Use GitHub Issues para bugs ou sugestões
-- **Discussions**: Use GitHub Discussions para perguntas
+MIT — ver [LICENSE](LICENSE).
 
 ---
 
-**Última atualização**: 2026-04-12  
-**Versão do repo**: 1.0.0
+**Maintainer:** Adriano Tomasoni · adriano@traderisk.com.br

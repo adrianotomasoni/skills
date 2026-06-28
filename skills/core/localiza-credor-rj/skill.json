@@ -1,0 +1,21 @@
+{
+  "id": "localiza-credor-rj",
+  "name": "localiza-credor-rj",
+  "version": "1.0.0",
+  "category": "core",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["seguro-credito", "recuperacao-judicial", "prospeccao", "leads-b2b", "radar-rj", "lgpd"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "frontend-design",
+  "name": "Frontend Design Patterns",
+  "version": "1.1.0",
+  "category": "frontend",
+  "status": "stable",
+  "type": "reference",
+  "tags": ["frontend", "ui", "ux", "responsive", "accessibility", "performance"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

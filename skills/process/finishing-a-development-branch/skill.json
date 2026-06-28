@@ -1,0 +1,21 @@
+{
+  "id": "finishing-a-development-branch",
+  "name": "finishing-a-development-branch",
+  "version": "1.0.0",
+  "category": "process",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["git", "branching", "merge", "workflow", "completion"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

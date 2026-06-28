@@ -1,20 +1,24 @@
-name: Validate Skills
+name: Validate Skills & Agents
 
 on:
   push:
-    branches: [main, "feature/**", "fix/**"]
+    branches: [main, "claude/**", "feature/**", "fix/**"]
     paths:
       - "skills/**"
-      - "scripts/validate-skills.py"
+      - "agents/**"
+      - "scripts/**"
+      - "registry.json"
   pull_request:
     branches: [main]
     paths:
       - "skills/**"
+      - "agents/**"
+      - "scripts/**"
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: Validate skill structure
+    name: Validate canonical multiplatform format
     permissions:
       contents: read
 
@@ -26,15 +30,17 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Validate all skills
-        run: python scripts/validate-skills.py
+      - name: Validate all skills (frontmatter + skill.json)
+        run: python scripts/validate-skills.py --strict
+
+      - name: Validate all agents
+        run: python scripts/validate-agents.py
 
       - name: Run structural tests
         run: python scripts/test-skills.py
 
-      - name: Check registry is up to date
-        run: |
-          python scripts/generate-registry.py --dry-run > /tmp/generated-registry.json
-          if ! diff -q registry.json /tmp/generated-registry.json > /dev/null 2>&1; then
-            echo "⚠️ registry.json may be out of date. Run: python scripts/generate-registry.py"
-          fi
+      - name: Export adapters (dry-run sanity check)
+        run: python scripts/export-adapters.py --dry-run
+
+      - name: Check registry.json is up to date
+        run: python scripts/generate-registry.py --check

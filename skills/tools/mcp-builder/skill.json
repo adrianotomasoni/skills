@@ -1,0 +1,21 @@
+{
+  "id": "mcp-builder",
+  "name": "MCP Builder",
+  "version": "1.0.0",
+  "category": "tools",
+  "status": "beta",
+  "type": "technique",
+  "tags": ["mcp", "model-context-protocol", "tools", "integration", "server"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

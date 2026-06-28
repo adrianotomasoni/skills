@@ -1,0 +1,21 @@
+{
+  "id": "licitaradar",
+  "name": "LicitaRadar",
+  "version": "1.0.0",
+  "category": "core",
+  "status": "beta",
+  "type": "technique",
+  "tags": ["licitacao", "pncp", "editais", "seguro-garantia", "monitoramento", "brasil"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

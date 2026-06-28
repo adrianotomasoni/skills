@@ -1,0 +1,21 @@
+{
+  "id": "doc-coauthoring",
+  "name": "Documentação Co-Autoria",
+  "version": "1.0.0",
+  "category": "engineering",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["documentation", "readme", "adr", "runbook", "technical-writing"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "multiplatform-authoring",
+  "name": "Multiplatform Authoring (Regra-Mãe)",
+  "version": "1.0.0",
+  "category": "meta",
+  "status": "stable",
+  "type": "pattern",
+  "tags": ["governanca", "multiplataforma", "autoria", "padrao", "regra", "skills", "agentes"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": ["writing-skills"],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

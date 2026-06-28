@@ -1,0 +1,21 @@
+{
+  "id": "apresentacao-alto-impacto",
+  "name": "Apresentação de Alto Impacto",
+  "version": "1.0.0",
+  "category": "frontend",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["apresentacao", "deck", "pitch", "slides", "b2b", "branding"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

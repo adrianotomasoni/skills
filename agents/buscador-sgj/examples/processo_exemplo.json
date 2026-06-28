@@ -1,0 +1,23 @@
+{
+  "numero_cnj": "0001487-41.2025.5.09.0652",
+  "tribunal": "TRT-9",
+  "esfera_v3": "trabalhista",
+  "fase_v3": "execucao",
+  "evento_garantia_v3": "deposito_recursal_trabalhista",
+  "tipo_oportunidade_v3": "seguro_garantia_recursal_trabalhista",
+  "status_analitico_v3": "oportunidade",
+  "score_v3": 72,
+  "urgencia_v3": "alta",
+  "nivel_garantia_v3": "sem_garantia",
+  "garantia_e_traderisk": false,
+  "valor_causa": 128000.00,
+  "valor_execucao": null,
+  "valor_a_garantir": null,
+  "fonte_valor": null,
+  "partes": [
+    { "nome": "HAVAN S.A.", "cnpj": "79379491000183", "polo": "passivo" }
+  ],
+  "movimentacoes": [
+    { "data": "2026-05-02", "descricao": "Bloqueio SISBAJUD parcial sobre contas da executada" }
+  ]
+}

@@ -1,78 +1,54 @@
 #!/bin/bash
 # scripts/sync-to-claude.sh
-# Sincroniza skills do repositório para Claude (/mnt/skills/user)
+# Instala as skills (e agentes) deste repo no Claude Code.
+#   skills -> ~/.claude/skills/<id>/      (namespace plano por id)
+#   agents -> ~/.claude/agents/<id>.md
+# Claude Code NÃO lê o alias ~/.agents/skills/ — por isso o destino é ~/.claude.
 
 set -e
 
-GITHUB_SKILLS="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/skills"
-CLAUDE_SKILLS="/mnt/skills/user"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SKILLS_SRC="$REPO_ROOT/skills"
+AGENTS_SRC="$REPO_ROOT/agents"
+CLAUDE_SKILLS="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+CLAUDE_AGENTS="${CLAUDE_AGENTS_DIR:-$HOME/.claude/agents}"
 
-# Cores
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-NC='\033[0m'
+GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; BLUE='\033[0;34m'; NC='\033[0m'
 
-echo -e "${BLUE}📦 Sincronizando skills para Claude...${NC}"
-echo ""
+echo -e "${BLUE}📦 Sincronizando skills/agentes para Claude Code...${NC}\n"
 
-# Verificar se diretório GitHub existe
-if [ ! -d "$GITHUB_SKILLS" ]; then
-  echo -e "${RED}❌ Diretório de skills não encontrado: $GITHUB_SKILLS${NC}"
-  exit 1
+if [ ! -d "$SKILLS_SRC" ]; then
+  echo -e "${RED}❌ skills/ não encontrado: $SKILLS_SRC${NC}"; exit 1
 fi
 
-# Criar diretório Claude se não existir
-mkdir -p "$CLAUDE_SKILLS"
+mkdir -p "$CLAUDE_SKILLS" "$CLAUDE_AGENTS"
 
-# Sincronizar cada skill
 skill_count=0
-for category_dir in "$GITHUB_SKILLS"/{traderisk,general,experimental}; do
-  if [ ! -d "$category_dir" ]; then
-    continue
-  fi
-  
-  category=$(basename "$category_dir")
-  
-  for skill_dir in "$category_dir"/*/; do
-    if [ ! -d "$skill_dir" ]; then
-      continue
-    fi
-    
-    skill_name=$(basename "$skill_dir")
-    skill_id="${category}-${skill_name}"
-    src="$skill_dir/SKILL.md"
-    dst="$CLAUDE_SKILLS/${skill_id}"
-    
-    if [ -f "$src" ]; then
-      mkdir -p "$dst"
-      
-      # Copiar arquivo principal
-      cp "$src" "$dst/SKILL.md"
-      
-      # Copiar exemplos
-      if [ -d "$skill_dir/examples" ]; then
-        cp -r "$skill_dir/examples" "$dst/" 2>/dev/null || true
-      fi
-      
-      # Copiar checklist
-      if [ -f "$skill_dir/checklist.md" ]; then
-        cp "$skill_dir/checklist.md" "$dst/"
-      fi
-      
-      # Copiar prompts
-      if [ -f "$skill_dir/prompts.yaml" ]; then
-        cp "$skill_dir/prompts.yaml" "$dst/"
-      fi
-      
-      echo -e "${GREEN}  ✓${NC} $skill_id"
-      ((skill_count++))
-    fi
+for category_dir in "$SKILLS_SRC"/*/; do
+  [ -d "$category_dir" ] || continue
+  for skill_dir in "$category_dir"*/; do
+    [ -f "$skill_dir/SKILL.md" ] || continue
+    skill_id=$(basename "$skill_dir")
+    dst="$CLAUDE_SKILLS/$skill_id"
+    rm -rf "$dst"
+    cp -r "$skill_dir" "$dst"
+    echo -e "${GREEN}  ✓${NC} skill: $skill_id"
+    ((skill_count++))
   done
 done
 
+agent_count=0
+if [ -d "$AGENTS_SRC" ]; then
+  for agent_dir in "$AGENTS_SRC"/*/; do
+    [ -f "$agent_dir/AGENT.md" ] || continue
+    agent_id=$(basename "$agent_dir")
+    [ "$agent_id" = "_template" ] && continue
+    cp "$agent_dir/AGENT.md" "$CLAUDE_AGENTS/$agent_id.md"
+    echo -e "${GREEN}  ✓${NC} agent: $agent_id"
+    ((agent_count++))
+  done
+fi
+
 echo ""
-echo -e "${GREEN}✅ Sincronizado: $skill_count skills${NC}"
-echo -e "${YELLOW}Local: $CLAUDE_SKILLS${NC}"
-echo ""
+echo -e "${GREEN}✅ $skill_count skills em $CLAUDE_SKILLS${NC}"
+echo -e "${GREEN}✅ $agent_count agentes em $CLAUDE_AGENTS${NC}\n"

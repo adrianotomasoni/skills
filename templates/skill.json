@@ -1,0 +1,21 @@
+{
+  "id": "skill-id-em-kebab-case",
+  "name": "Nome Legível da Skill",
+  "version": "1.0.0",
+  "category": "core",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["tag1", "tag2"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}
