@@ -36,6 +36,9 @@ jobs:
       - name: Validate all agents
         run: python scripts/validate-agents.py
 
+      - name: Check for broken relative links (embasamento)
+        run: python scripts/check-links.py
+
       - name: Run structural tests
         run: python scripts/test-skills.py
 

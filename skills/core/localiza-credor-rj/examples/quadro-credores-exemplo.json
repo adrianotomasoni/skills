@@ -1,0 +1,50 @@
+{
+  "_nota": "EXEMPLO FICTÍCIO para ilustrar o formato de saída da skill. Empresas, CNPJs, processo e valores são inventados. TODO: substituir por dados reais (de fonte pública rastreável) da TradeRisk, preservando conformidade LGPD B2B.",
+  "devedor_origem": {
+    "razao_social": "Indústria Devedora Exemplo S.A. (FICTÍCIA)",
+    "processo": "0000000-00.2026.8.26.0100",
+    "comarca": "São Paulo/SP"
+  },
+  "documento_fonte": {
+    "tipo": "QGC",
+    "url": "https://exemplo-administrador-judicial.com.br/qgc (FICTÍCIO)"
+  },
+  "credores_qualificados": [
+    {
+      "razao_social": "Metalúrgica Credora Exemplo Ltda (FICTÍCIA)",
+      "cnpj": "00.000.000/0001-00",
+      "cnae_principal": "Fabricação de estruturas metálicas",
+      "porte": "Médio (faixa R$20M–500M)",
+      "exportador": true,
+      "valor_habilitado": 850000.00,
+      "classe_credito": "III (quirografário)",
+      "score_prospeccao": 86,
+      "prioridade": "alta",
+      "abordagem_sugerida": "Campanha setorial de prevenção: empresas industriais que vendem a prazo e exportam têm enfrentado aumento de inadimplência B2B; apresentar o Seguro de Crédito como proteção do fluxo de recebíveis. NÃO mencionar a RJ de origem.",
+      "origem_exposta_ao_lead": false
+    },
+    {
+      "razao_social": "Distribuidora Atacado Exemplo Ltda (FICTÍCIA)",
+      "cnpj": "11.111.111/0001-11",
+      "cnae_principal": "Comércio atacadista de produtos diversos",
+      "porte": "Médio",
+      "exportador": false,
+      "valor_habilitado": 120000.00,
+      "classe_credito": "III (quirografário)",
+      "score_prospeccao": 58,
+      "prioridade": "media",
+      "abordagem_sugerida": "Nutrição: conteúdo sobre gestão de risco de recebíveis no atacado. Abordagem por risco setorial, sem individualizar origem.",
+      "origem_exposta_ao_lead": false
+    }
+  ],
+  "descartados": [
+    {
+      "razao_social": "Banco Exemplo S.A.",
+      "motivo": "Instituição financeira — não compra seguro de crédito"
+    },
+    {
+      "razao_social": "Fazenda Nacional",
+      "motivo": "Crédito tributário / órgão público — fora do escopo B2B"
+    }
+  ]
+}

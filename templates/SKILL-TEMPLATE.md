@@ -30,6 +30,12 @@ Tabela ou bullets para escanear rapidamente as operações comuns.
 - Erro comum 1 + correção
 - Erro comum 2 + correção
 
+## Referências / Embasamento
+
+- [`examples/...`](examples/) — exemplos reais (use `TODO:` onde precisar de dado proprietário)
+- [`templates/...`](templates/) — modelos reutilizáveis
+- Todo link relativo aqui DEVE apontar para um arquivo existente (validado por `scripts/check-links.py`).
+
 ---
 <!-- Metadados estendidos ficam em skill.json (NÃO no frontmatter). -->
 <!-- O frontmatter (name+description) deve ter no máximo 1024 caracteres. -->

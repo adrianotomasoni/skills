@@ -1,11 +1,22 @@
 # frontend-design-process
 
-> Categoria: `process` · Formato canônico multiplataforma (ver `skills/meta/multiplatform-authoring`).
+> Categoria: `process` · Formato canônico multiplataforma.
 
 ## O que é
-Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+Orientação para design visual distintivo e intencional ao construir ou reformular UI. Ajuda com direção estética, tipografia e escolhas que fogem do "default templado" (a cara genérica de framework sem personalidade).
+
+## Quando dispara
+- "Crie a tela X", "melhore o visual deste componente", "deixe a landing page mais bonita".
+- Quando o resultado precisa parecer projetado, não gerado por padrão.
+- NÃO é sobre lógica de frontend — é sobre as decisões de design (cor, tipografia, espaço, hierarquia).
 
 ## Como usar
-- **Claude Code / Codex / Gemini / Copilot:** instale a pasta em `~/.claude/skills/frontend-design-process/` (ou `~/.agents/skills/frontend-design-process/`).
-- **Claude.ai / OpenAI / Manus / Cursor:** veja `docs/USAGE.md` e `skills/meta/multiplatform-authoring/references/`.
+- **Claude Code / Codex / Cursor:** invoque a skill antes de escrever CSS/markup; ela orienta a direção estética e as escolhas tipográficas.
+- **Gemini CLI / Copilot CLI:** ativada nativamente ao detectar trabalho de UI.
+- **claude.ai / OpenAI / Manus:** cole `SKILL.md` e use o roteiro de decisões de design antes de gerar a interface.
+
+## Exemplo
+"Faça um dashboard" → em vez de cair no tema padrão, a skill força escolhas explícitas de paleta, escala tipográfica e ritmo de espaçamento que dão identidade ao resultado.
+
+## Material de apoio
 - Conteúdo completo em [`SKILL.md`](SKILL.md); metadados em [`skill.json`](skill.json).

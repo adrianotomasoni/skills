@@ -1,0 +1,31 @@
+{
+  "tipo_documento": "contrato",
+  "campos_extraidos": {
+    "partes": [
+      {
+        "papel": "CONTRATANTE",
+        "nome": "TODO: razão social da contratante (dado proprietário)",
+        "cnpj": "12.345.678/0001-90"
+      },
+      {
+        "papel": "CONTRATADA",
+        "nome": "TODO: razão social da contratada (dado proprietário)",
+        "cnpj": "98.765.432/0001-10"
+      }
+    ],
+    "valor": 120000.0,
+    "moeda": "BRL",
+    "datas": {
+      "assinatura": "2026-01-15",
+      "inicio_vigencia": "2026-02-01",
+      "fim_vigencia": "2027-01-31"
+    },
+    "vigencia": "12 meses",
+    "objeto": "Prestação de serviços de consultoria"
+  },
+  "confianca": 0.94,
+  "campos_nao_encontrados": [
+    "datas.rescisao",
+    "clausula_reajuste"
+  ]
+}

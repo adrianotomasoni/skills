@@ -1,0 +1,31 @@
+{
+  "_nota": "EXEMPLO FICTÍCIO para ilustrar o formato de saída. Dados não correspondem a um edital real. TODO: substituir por casos reais (anonimizados) da TradeRisk.",
+  "numeroControlePNCP": "00000000000000-1-000001/2026",
+  "orgao": "Prefeitura Municipal de Exemplo",
+  "modalidade": "Pregão Eletrônico",
+  "objeto": "Reforma de unidade escolar municipal",
+  "valorTotalEstimado": 1200000.00,
+  "dataPublicacao": "2026-06-20",
+  "dataEncerramentoProposta": "2026-07-10",
+  "garantia": {
+    "exigida": true,
+    "tipo": "garantia de execução (qualquer modalidade do art. 96 da Lei 14.133/2021)",
+    "percentual": 5,
+    "importanciaSeguradaEstimada": 60000.00
+  },
+  "classificacao": {
+    "classe": "alta",
+    "score": 88,
+    "criteriosAtendidos": [
+      "modalidade elegível (pregão)",
+      "valor estimado > R$ 100.000",
+      "exige seguro garantia / caução",
+      "setor compatível com portfólio (construção civil)"
+    ]
+  },
+  "acaoRecomendada": "Alerta imediato ao cliente do segmento de construção civil",
+  "observacoes": [
+    "Garantia de execução aceita seguro garantia — alta aderência ao produto",
+    "Verificar habilitação técnica antes de acionar o cliente"
+  ]
+}
