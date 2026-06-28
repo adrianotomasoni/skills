@@ -1,0 +1,15 @@
+{
+  "origem": "contrato.pdf",
+  "pagina": 3,
+  "tipo_tabela": "cronograma_pagamentos",
+  "headers": ["parcela", "vencimento", "valor", "status"],
+  "rows": [
+    ["1", "2026-02-10", 10000.0, "pendente"],
+    ["2", "2026-03-10", 10000.0, "pendente"],
+    ["3", "2026-04-10", 10000.0, "pendente"],
+    ["4", "2026-05-10", 10000.0, "pendente"]
+  ],
+  "total": 40000.0,
+  "confianca": 0.91,
+  "observacoes": "TODO: conciliar com o valor total do contrato na base proprietária TradeRisk"
+}

@@ -1,53 +1,48 @@
 # Monitoramento Judicial Proativo
 
-Skill para detecção automática de eventos relevantes em processos judiciais, com classificação de risco e recomendações de ação para operações de seguro garantia e crédito comercial.
+> Categoria: `core` · Detecção e classificação de eventos judiciais relevantes para seguro garantia e crédito.
 
-## Versão
+## O que é
 
-**4.0.0** – Unified engine com classificação multinível
+Skill que analisa movimentações processuais (sistema CNJ/Brasil), classifica eventos por nível de criticidade (A–D) e calcula um score de risco com recomendação de ação e prazo. Serve para antecipar acionamento de garantia, priorizar a atuação jurídica e acompanhar mudanças no perfil de risco de uma apólice. Sinaliza e prioriza — **não substitui parecer jurídico**.
 
-## Como Usar
+## Gatilhos (quando acionar)
 
-### Em Claude.ai
-1. Faça upload de `SKILL.md` em Settings → Knowledge
-2. Envie movimentações processuais para análise
+- "Analisa esta movimentação processual"
+- "Esse processo é risco para a apólice?"
+- "O que essa penhora/citação significa?"
+- "Classifica o evento e calcula o score"
 
-### Em Cursor
-```
-@skills/core/judicial-monitoring/SKILL.md
-Analise esta movimentação: [cole o texto aqui]
-```
+## Quando NÃO usar
 
-### Exemplo de Prompt
-```
-Analise a seguinte movimentação e classifique o risco:
+- Substituir análise jurídica especializada (apenas sinaliza/prioriza).
+- Fora do Brasil — a taxonomia segue o sistema CNJ.
+- Análise de crédito do garantido → `credit-risk-analysis`.
 
-Processo: 0001234-56.2026.8.26.0100
-Movimento: "Penhora sobre bem imóvel, avaliado em R$ 450.000,00"
-Parte garantida: Construtora XYZ Ltda
-Apólice: TRK-2026-001234
-```
+## Como usar por plataforma
 
-## Estrutura
+- **Claude Code / Codex / Gemini / Copilot:** instale em `~/.claude/skills/judicial-monitoring/`.
+- **Claude.ai:** upload de `SKILL.md` em Settings → Knowledge e envie a movimentação.
+- **Cursor:** `@skills/core/judicial-monitoring/SKILL.md` + o texto da movimentação.
 
-```
-judicial-monitoring/
-├── SKILL.md           # Definição da skill
-├── README.md          # Este arquivo
-├── prompts/           # Prompts especializados por fase
-│   ├── fase-1-v4-unified.md
-│   ├── fase-1-v3-spec.md
-│   └── melhorias-motor-judicial-2026.md
-├── examples/          # Casos de estudo reais anonimizados
-│   └── case-studies.json
-└── tests/             # Suite de avaliação
-    └── eval-suite.json
-```
+## Exemplo
+
+Prompt: *"Movimento: 'Penhora sobre bem imóvel, R$ 450.000'. Parte garantida: Construtora XYZ. Apólice TRK-2026-001234."*
+Saída esperada: nível A, score ~87, valor de impacto e recomendação de acionamento imediato (ver `SKILL.md`). Casos em `examples/case-studies.json`.
+
+## Material de apoio
+
+- `SKILL.md` — taxonomia de eventos (v4), protocolo de análise e formato de saída.
+- `prompts/` — prompts especializados por fase (`fase-1-v4-unified.md`, `fase-1-v3-spec.md`, `melhorias-motor-judicial-2026.md`).
+- `examples/case-studies.json` — casos reais anonimizados.
+- `tests/eval-suite.json` — suite de avaliação.
+
+## Dependências
+
+- `credit-risk-analysis` — para contexto de risco do garantido.
+
+> Taxonomia (níveis A–D), fórmula de score e cadências são definições internas — não alterar. Há latência de até 24h na atualização dos tribunais. Pesos e parâmetros calibrados: TODO: preencher com <calibração proprietária> da TradeRisk.
 
 ## Tags
 
 `judicial` `monitoring` `seguro-garantia` `risco` `eventos`
-
-## Dependências
-
-- `credit-risk-analysis` (para contexto de risco do garantido)

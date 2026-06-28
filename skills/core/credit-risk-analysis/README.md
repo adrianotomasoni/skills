@@ -1,38 +1,42 @@
 # Análise de Risco de Crédito
 
-Skill para análise de risco de crédito comercial B2B, gerando pareceres estruturados com rating A-F e recomendações de exposição.
+> Categoria: `core` · Análise de risco de crédito comercial B2B com rating, score e recomendação de exposição.
 
-## Versão
+## O que é
 
-**2.1.0**
+Skill que avalia o risco de crédito comercial B2B de empresas brasileiras e produz parecer estruturado: rating A–F, score 0–1000 e recomendação de aprovação, condicionamento ou recusa, com limite de exposição e prazo sugeridos. Combina análise cadastral, financeira, comportamental e setorial.
 
-## Como Usar
+## Gatilhos (quando acionar)
 
-### Exemplo de Prompt
-```
-Analise o risco de crédito da seguinte empresa:
+- "Analisa o risco de crédito desta empresa / CNPJ"
+- "Qual limite de exposição para o cliente X?"
+- "Aprovo ou recuso esse crédito/garantia?"
+- "Gera um parecer de crédito"
 
-CNPJ: 12.345.678/0001-90
-Razão Social: Construtora XYZ Ltda
-Faturamento anual: R$ 8.500.000
-Dívida financeira: R$ 1.200.000
-Histórico Serasa: sem restrições
-Processos ativos: 2 trabalhistas (R$ 150.000 total)
-Setor: Construção civil
-```
+## Quando NÃO usar
 
-## Estrutura
+- Produzir conteúdo ou marketing sobre risco → `skill-traderisk-content-writer`.
+- Classificar movimentação judicial → `judicial-monitoring`.
 
-```
-credit-risk-analysis/
-├── SKILL.md              # Definição da skill
-├── README.md             # Este arquivo
-├── templates/
-│   ├── credit-assessment.md   # Template de parecer
-│   └── score-calculator.js    # Calculadora de score
-└── examples/
-    └── case-studies.json
-```
+## Como usar por plataforma
+
+- **Claude Code / Codex / Gemini / Copilot:** instale em `~/.claude/skills/credit-risk-analysis/`.
+- **Claude.ai:** upload de `SKILL.md` em Settings → Knowledge e envie os dados da empresa.
+- **Cursor:** `@skills/core/credit-risk-analysis/SKILL.md` + os dados do CNPJ.
+
+## Exemplo
+
+Prompt: *"Analisa: Construtora XYZ Ltda, faturamento R$ 8,5M, dívida R$ 1,2M, sem restrições Serasa, 2 trabalhistas (R$ 150k), construção civil."*
+Saída esperada: JSON com rating, score, recomendação, limite e pontos de atenção (ver formato no `SKILL.md`). Casos de referência em `examples/case-studies.json`.
+
+## Material de apoio
+
+- `SKILL.md` — metodologia, escala de rating e formato de saída.
+- `templates/credit-assessment.md` — template de parecer.
+- `templates/score-calculator.js` — calculadora de score.
+- `examples/case-studies.json` — casos reais anonimizados.
+
+> O parecer reflete o momento da análise; reavaliar a cada 6 meses ou após evento relevante. Não substitui due diligence completa em valores altos. Escala de rating e score são definições internas — não alterar. Benchmarks setoriais e dados de fonte: TODO: preencher com <parâmetros proprietários> da TradeRisk.
 
 ## Tags
 

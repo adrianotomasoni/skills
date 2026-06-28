@@ -1,0 +1,323 @@
+openapi: 3.1.0
+info:
+  title: Credit Analyses API
+  version: 1.0.0
+  description: >
+    Contrato mínimo de exemplo para um recurso CRUD RESTful no padrão TradeRisk.
+    Use como ponto de partida; ajuste schemas e nomes ao domínio real.
+  contact:
+    name: TODO: time responsável pela API
+    email: TODO: e-mail de contato da API
+
+servers:
+  - url: https://TODO-host-da-api.example.com/v1
+    description: TODO: ambiente de produção
+  - url: https://TODO-host-staging.example.com/v1
+    description: TODO: ambiente de staging
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: credit-analyses
+    description: Análises de crédito
+
+paths:
+  /credit-analyses:
+    get:
+      tags: [credit-analyses]
+      summary: Lista análises de crédito (paginado)
+      operationId: listCreditAnalyses
+      parameters:
+        - name: page
+          in: query
+          description: Página (paginação por offset). Inicia em 1.
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: Itens por página.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: status
+          in: query
+          description: Filtra por status.
+          schema:
+            $ref: '#/components/schemas/CreditAnalysisStatus'
+        - name: sortBy
+          in: query
+          description: Campo de ordenação.
+          schema:
+            type: string
+            enum: [createdAt, updatedAt, score]
+            default: createdAt
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        '200':
+          description: Lista paginada de análises.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditAnalysisList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      tags: [credit-analyses]
+      summary: Cria uma análise de crédito
+      operationId: createCreditAnalysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditAnalysisCreate'
+      responses:
+        '201':
+          description: Análise criada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditAnalysisResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /credit-analyses/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Identificador (UUID v4) da análise.
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags: [credit-analyses]
+      summary: Detalha uma análise de crédito
+      operationId: getCreditAnalysis
+      responses:
+        '200':
+          description: Análise encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditAnalysisResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags: [credit-analyses]
+      summary: Atualiza parcialmente uma análise
+      operationId: updateCreditAnalysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditAnalysisPatch'
+      responses:
+        '200':
+          description: Análise atualizada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditAnalysisResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [credit-analyses]
+      summary: Remove uma análise de crédito
+      operationId: deleteCreditAnalysis
+      responses:
+        '204':
+          description: Removida com sucesso (sem corpo).
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Token JWT no header Authorization (Bearer <token>).
+
+  responses:
+    BadRequest:
+      description: Requisição inválida.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Não autenticado.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Recurso não encontrado.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Erro interno.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    CreditAnalysisStatus:
+      type: string
+      enum: [pending, in_review, approved, rejected]
+
+    CreditAnalysis:
+      type: object
+      required: [id, customerId, status, score, createdAt, updatedAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        customerId:
+          type: string
+          format: uuid
+          description: 'TODO: referência ao cliente no domínio TradeRisk'
+        status:
+          $ref: '#/components/schemas/CreditAnalysisStatus'
+        score:
+          type: integer
+          minimum: 0
+          maximum: 1000
+          description: 'TODO: faixa/significado de score proprietário TradeRisk'
+        reviewerNotes:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreditAnalysisCreate:
+      type: object
+      required: [customerId]
+      properties:
+        customerId:
+          type: string
+          format: uuid
+        reviewerNotes:
+          type: string
+
+    CreditAnalysisPatch:
+      type: object
+      description: Apenas os campos enviados são atualizados.
+      properties:
+        status:
+          $ref: '#/components/schemas/CreditAnalysisStatus'
+        reviewerNotes:
+          type: string
+
+    Pagination:
+      type: object
+      required: [page, pageSize, totalItems, totalPages]
+      properties:
+        type:
+          type: string
+          enum: [offset, cursor]
+          default: offset
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        nextCursor:
+          type: string
+          nullable: true
+          description: Presente apenas em paginação por cursor.
+
+    Meta:
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        timestamp:
+          type: string
+          format: date-time
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+
+    CreditAnalysisResponse:
+      type: object
+      required: [data, meta]
+      properties:
+        data:
+          $ref: '#/components/schemas/CreditAnalysis'
+        meta:
+          $ref: '#/components/schemas/Meta'
+
+    CreditAnalysisList:
+      type: object
+      required: [data, meta]
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditAnalysis'
+        meta:
+          $ref: '#/components/schemas/Meta'
+
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              description: Código estável de erro (parte do contrato).
+            message:
+              type: string
+            details:
+              type: array
+              items:
+                $ref: '#/components/schemas/ErrorDetail'
+            requestId:
+              type: string
+              format: uuid
