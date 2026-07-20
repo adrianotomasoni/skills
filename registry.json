@@ -1,10 +1,10 @@
 {
   "version": "2.0.0",
-  "lastUpdated": "2026-06-28T17:05:51Z",
+  "lastUpdated": "2026-07-20T00:23:29Z",
   "repository": "https://github.com/adrianotomasoni/skills",
   "maintainer": "adriano@traderisk.com.br",
   "counts": {
-    "skills": 33,
+    "skills": 34,
     "agents": 3
   },
   "skills": [
@@ -276,6 +276,42 @@
         "supabase",
         "edge-functions",
         "http"
+      ],
+      "dependencies": [],
+      "platforms": {
+        "claude": "supported",
+        "claude-code": "supported",
+        "openai": "supported",
+        "gemini": "supported",
+        "cursor": "supported",
+        "copilot": "supported",
+        "codex": "supported",
+        "manus": "supported"
+      },
+      "maintainer": "adriano@traderisk.com.br"
+    },
+    {
+      "id": "arquiteto-ciberseguranca",
+      "category": "engineering",
+      "name": "Arquiteto de Cibersegurança",
+      "version": "1.0.0",
+      "status": "stable",
+      "type": "technique",
+      "description": "Arquiteto de cibersegurança para projetos vibe-coded e full-stack. Use SEMPRE que houver - revisão de segurança de código, auditoria de projeto Lovable/Supabase/Vercel, configuração de RLS, exposição de chaves/segredos, hardening de CI/CD no GitHub, política de bucket Wasabi/S3, headers de segurança, CSP, checklist pré-deploy, \"está seguro para publicar?\", \"alguém pode acessar meus dados?\", ou antes de tornar um projeto público. Também acionar quando o usuário anexar código gerado por IA (Lovable, Claude Code, Codex, Cursor) e pedir avaliação, mesmo sem dizer \"segurança\".",
+      "path": "skills/engineering/arquiteto-ciberseguranca",
+      "file": "SKILL.md",
+      "tags": [
+        "seguranca",
+        "appsec",
+        "rls",
+        "supabase",
+        "lovable",
+        "vercel",
+        "wasabi",
+        "csp",
+        "secrets",
+        "ci-cd",
+        "traderisk"
       ],
       "dependencies": [],
       "platforms": {

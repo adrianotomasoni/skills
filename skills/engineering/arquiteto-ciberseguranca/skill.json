@@ -1,0 +1,21 @@
+{
+  "id": "arquiteto-ciberseguranca",
+  "name": "Arquiteto de Cibersegurança",
+  "version": "1.0.0",
+  "category": "engineering",
+  "status": "stable",
+  "type": "technique",
+  "tags": ["seguranca", "appsec", "rls", "supabase", "lovable", "vercel", "wasabi", "csp", "secrets", "ci-cd", "traderisk"],
+  "maintainer": "adriano@traderisk.com.br",
+  "dependencies": [],
+  "platforms": {
+    "claude": "supported",
+    "claude-code": "supported",
+    "openai": "supported",
+    "gemini": "supported",
+    "cursor": "supported",
+    "copilot": "supported",
+    "codex": "supported",
+    "manus": "supported"
+  }
+}

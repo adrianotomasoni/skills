@@ -1,0 +1,71 @@
+# .github/workflows/security.yml
+# Pipeline de segurança para projetos Lovable/Supabase/Vercel.
+# Actions fixadas por SHA: tag é mutável, SHA não.
+name: security
+
+on:
+  pull_request:
+  push: { branches: [main] }
+  schedule: [{ cron: '0 6 * * 1' }]   # varredura semanal pega CVE novo em código parado
+
+permissions: read-all   # elevar só onde for necessário
+
+jobs:
+  segredos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: { fetch-depth: 0 }   # sem isso, o gitleaks não vê o histórico — que é onde os segredos moram
+      - uses: gitleaks/gitleaks-action@83373cf2f8c4db6e24b41c1a9b086bb9619e9cd3 # v2.3.7
+        env: { GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}' }
+      - name: trufflehog (apenas verificados)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+          trufflehog git file://. --only-verified --fail
+
+  sast:
+    runs-on: ubuntu-latest
+    permissions: { security-events: write }
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: returntocorp/semgrep-action@713efdd345f3035192eaa63f56867b88e63e4e5d # v1
+        with: { config: 'p/default p/typescript p/react p/secrets p/owasp-top-ten' }
+
+  dependencias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: google/osv-scanner-action@v2
+        with: { scan-args: "-r --skip-git ./" }
+      - uses: aquasecurity/trivy-action@18f2510ee396bbf400402947b394f2dd8c87dbb0 # v0.29.0
+        with:
+          scan-type: fs
+          scanners: 'vuln,secret,misconfig'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
+
+  revisao-claude:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions: { contents: read, pull-requests: write }
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: { fetch-depth: 0 }
+      - uses: anthropics/claude-code-security-review@main
+        with:
+          claude-api-key: '${{ secrets.ANTHROPIC_API_KEY }}'
+          comment-pr: true
+          exclude-directories: 'docs,tests,node_modules'
+
+  rls-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: falha se alguma tabela do schema public estiver sem RLS
+        env: { DB_URL: '${{ secrets.SUPABASE_DB_URL }}' }
+        run: |
+          sudo apt-get install -y postgresql-client -qq
+          EXPOSTAS=$(psql "$DB_URL" -tAc "select string_agg(c.relname,', ') from pg_class c
+            join pg_namespace n on n.oid=c.relnamespace
+            where n.nspname='public' and c.relkind='r' and not c.relrowsecurity;")
+          if [ -n "$EXPOSTAS" ]; then echo "::error::tabelas sem RLS: $EXPOSTAS"; exit 1; fi
