@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "description": "Suite de avaliação para a skill de arquitetura de cibersegurança (stack Lovable/Supabase/Vercel/Wasabi)",
+  "casos": [
+    {
+      "id": "eval-001",
+      "input": "Tabela `public.pedidos` criada via migration SQL bruta, sem nenhuma policy e com `relrowsecurity = false`. A chave pública do Supabase está no bundle do frontend.",
+      "achado_critico": true,
+      "categoria_esperada": "rls-ausente",
+      "acao_esperada": "bloquear publicação até habilitar RLS e criar policy antes de qualquer outra checagem"
+    },
+    {
+      "id": "eval-002",
+      "input": "Variável de ambiente `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY` referenciada em `src/lib/admin.ts` e versionada no `.env` do repositório.",
+      "achado_critico": true,
+      "categoria_esperada": "segredo-vazado-service-role",
+      "acao_esperada": "instruir rotação da chave antes de qualquer correção de código"
+    },
+    {
+      "id": "eval-003",
+      "input": "Todas as tabelas do schema public têm RLS habilitada com policies restritas ao `auth.uid()`, updates usam USING e WITH CHECK, Edge Functions validam JWT, nenhum segredo client-side encontrado.",
+      "achado_critico": false,
+      "categoria_esperada": "sem-achado-critico",
+      "acao_esperada": "declarar explicitamente o que foi verificado; não afirmar 'seguro' além do escopo checado"
+    },
+    {
+      "id": "eval-004",
+      "input": "Bucket do Wasabi/S3 configurado como público, aceitando upload direto de arquivos enviados por usuários finais sem validação de tipo.",
+      "achado_critico": true,
+      "categoria_esperada": "storage-bucket-publico",
+      "acao_esperada": "sinalizar risco de hospedagem de malware e recomendar policy de bucket + validação de tipo"
+    }
+  ]
+}

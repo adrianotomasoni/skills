@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "description": "Suite de avaliação para a skill de análise de risco de crédito comercial B2B",
+  "casos": [
+    {
+      "id": "eval-001",
+      "input": "Empresa de médio porte, 15 anos de atividade, situação regular na Receita Federal, liquidez corrente 1.8, margem EBITDA de 18%, sem protestos ou processos judiciais, endividamento controlado.",
+      "rating_esperado": "A",
+      "score_min": 800,
+      "score_max": 1000,
+      "recomendacao_esperada": "Aprovado"
+    },
+    {
+      "id": "eval-002",
+      "input": "Empresa aberta há 4 meses, sem histórico de faturamento, sócio com outra empresa baixada por inatividade, sem demonstrações financeiras disponíveis.",
+      "rating_esperado": "E",
+      "score_min": 200,
+      "score_max": 349,
+      "recomendacao_esperada": "Recusa ou garantias adicionais"
+    },
+    {
+      "id": "eval-003",
+      "input": "Empresa com 3 protestos em cartório nos últimos 12 meses, endividamento financeiro crescente, margem EBITDA negativa no último balanço, processos judiciais trabalhistas ativos.",
+      "rating_esperado": "F",
+      "score_min": 0,
+      "score_max": 199,
+      "recomendacao_esperada": "Recusa imediata"
+    },
+    {
+      "id": "eval-004",
+      "input": "Empresa de porte médio, situação cadastral regular, liquidez corrente 1.1, endividamento moderado, sem protestos, setor com risco setorial 3/5 (sazonalidade relevante).",
+      "rating_esperado": "C",
+      "score_min": 500,
+      "score_max": 649,
+      "recomendacao_esperada": "Aprovação condicionada"
+    }
+  ]
+}

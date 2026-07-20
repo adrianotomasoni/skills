@@ -129,16 +129,34 @@ pedido ("evidências de erros de migração pro repositório").
 Categoria escolhida: `engineering` — é a única categoria válida (`VALID_CATEGORIES` em
 `scripts/_common.py`) que cobre segurança/revisão de código; não existe categoria "security".
 
-### 5.2 [LACUNA ⚠️] Cobertura de testes — 33/34 skills sem `eval-suite.json`
+### 5.2 [CORRIGIDO ✅] Cobertura de testes — 33/34 skills sem `eval-suite.json`
 
-`test-skills.py` só faz validação estrutural de `core/judicial-monitoring` (única com
-`eval-suite.json`). As demais 33 são puladas. Não é bug — é ausência de asset de teste. Impede
-detectar regressão de comportamento (só a estrutura é verificada pelos outros validadores).
+`test-skills.py` só fazia validação estrutural de `core/judicial-monitoring` (única com
+`eval-suite.json`). As demais eram puladas — não é bug, é ausência de asset de teste, mas impedia
+detectar regressão de comportamento.
 
-### 5.3 [OBSERVAÇÃO ℹ️] Divergência de nomenclatura entre skills globais e do repo
+**Correção aplicada:** adicionados `tests/eval-suite.json` para as duas outras skills de maior
+risco de negócio apontadas na recomendação §6.1: `core/credit-risk-analysis` (4 casos cobrindo
+ratings A/C/E/F) e `engineering/arquiteto-ciberseguranca` (4 casos cobrindo RLS ausente, segredo
+`service_role` vazado, bucket público e o caso "sem achado crítico"). `test-skills.py` agora passa
+estruturalmente em 3/34 skills. As 31 restantes continuam sem asset de teste — ver §6.
 
-Ao migrar as skills globais para o repo, alguns nomes foram normalizados. **Não é erro** — apenas
-convém documentar o mapeamento para evitar duplicação futura:
+### 5.4 [CORRIGIDO ✅] `check-links.py` não validava referências a `.yml`/`.yaml`
+
+O regex de menções em crase (`BACKTICK_PATH`) só cobria `md|ts|js|json|py|sh|mdc|txt` — uma
+referência quebrada a `references/ci-pipeline.yml` (citado em `SKILL.md`/`README.md` da skill
+`arquiteto-ciberseguranca`) passaria despercebida pelo CI. Corrigido em `scripts/check-links.py`
+adicionando `yml`/`yaml` às extensões verificadas (174 → 182 alvos verificados). Isso é o que
+garante, na prática, que o `references/ci-pipeline.yml` da skill se mantenha corretamente linkado
+e detectável se for movido/apagado — ver recomendação §6.2.
+
+### 5.3 [CORRIGIDO ✅] Divergência de nomenclatura entre skills globais e do repo
+
+Ao migrar as skills globais para o repo, alguns nomes foram normalizados. **Não era erro** — mas
+faltava registro durável do mapeamento. **Correção aplicada:** criado
+[`docs/MAPEAMENTO-NOMENCLATURA.md`](MAPEAMENTO-NOMENCLATURA.md) e referenciado no passo 0 de
+`docs/CONTRIBUTING.md`, para que uma nova migração confira a tabela antes de criar uma pasta
+nova (evita duplicar skill com nome diferente).
 
 | Skill global (Claude) | Skill no repositório |
 |---|---|
@@ -151,12 +169,23 @@ As demais skills autorais globais (`apresentacao-alto-impacto`, `auditoria-de-se
 `credit-risk-analysis`, `localiza-credor-rj`, `traderisk-frontend-design`, `doc-coauthoring`,
 `mcp-builder`) já possuem correspondente 1:1 no repo. Nenhuma outra ausência foi detectada.
 
-## 6. Recomendações priorizadas
+## 6. Recomendações priorizadas — status
 
-1. **Adicionar `eval-suite.json`** às skills de maior risco de negócio primeiro
-   (`credit-risk-analysis`, `judicial-monitoring`, `arquiteto-ciberseguranca`), no molde da que já
-   existe em `core/judicial-monitoring`, para habilitar testes de regressão em `test-skills.py`.
-2. **Manter `arquiteto-ciberseguranca` no CI** — o `references/ci-pipeline.yml` da própria skill traz
-   o workflow de segurança pronto (RLS advisors, gitleaks/trufflehog, semgrep/trivy, review por IA).
-3. **Registrar o mapeamento de nomenclatura** (§5.3) para que novas migrações não recriem skills
-   duplicadas com nomes diferentes.
+1. ✅ **`eval-suite.json` adicionado** às skills de maior risco de negócio
+   (`credit-risk-analysis`, `judicial-monitoring` já tinha, `arquiteto-ciberseguranca`), no molde
+   estrutural (`id` + `input` + campos de expectativa por domínio). `test-skills.py` passa
+   estruturalmente em 3/34 skills. Inferência real contra a API (`--api-key`) ainda não está
+   implementada no runner (`TODO` já existente em `scripts/test-skills.py`) — pendente, fora do
+   escopo desta correção.
+2. ✅ **`arquiteto-ciberseguranca` mantida íntegra e verificável no CI** — o
+   `references/ci-pipeline.yml` continua sendo um *template* para ser copiado no projeto-alvo
+   (Lovable/Supabase/Vercel), não algo que rode neste repo-registro de skills (que não tem projeto
+   Supabase próprio). O que passou a rodar no CI **deste repo** é a garantia de que o link para
+   `ci-pipeline.yml` nunca fica quebrado silenciosamente — corrigido o gap do validador (§5.4).
+3. ✅ **Mapeamento de nomenclatura registrado** em `docs/MAPEAMENTO-NOMENCLATURA.md` e linkado no
+   fluxo de contribuição (§5.3).
+
+### Pendente (fora do escopo desta rodada, para priorizar depois)
+
+- Estender `eval-suite.json` às 31 skills restantes (maior esforço; comece pelas de `core`).
+- Implementar a chamada real à API Anthropic em `scripts/test-skills.py` (hoje só valida estrutura).

@@ -24,9 +24,9 @@ SCAN_EXT = {'.md'}
 
 MD_LINK = re.compile(r'\[[^\]]*\]\(([^)]+)\)')
 # crase contendo um caminho de arquivo com extensão conhecida
-BACKTICK_PATH = re.compile(r'`([^`\n]+?\.(?:md|ts|js|json|py|sh|mdc|txt))`')
+BACKTICK_PATH = re.compile(r'`([^`\n]+?\.(?:md|ts|js|json|py|sh|mdc|txt|yml|yaml))`')
 
-EXT_OK = ('.md', '.ts', '.js', '.json', '.py', '.sh', '.mdc', '.txt')
+EXT_OK = ('.md', '.ts', '.js', '.json', '.py', '.sh', '.mdc', '.txt', '.yml', '.yaml')
 
 
 def is_external(target: str) -> bool:

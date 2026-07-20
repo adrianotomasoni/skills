@@ -12,6 +12,14 @@
 
 ## Adicionando uma Nova Skill
 
+### 0. Confira se já não existe (migração de skill global)
+
+Se você está migrando uma skill do seu Claude global (`~/.claude/skills/`), confira
+[`docs/MAPEAMENTO-NOMENCLATURA.md`](MAPEAMENTO-NOMENCLATURA.md) — o nome global e o nome no repo
+podem divergir. Se já existir uma skill correspondente, **edite-a** (seção "Editando uma Skill
+Existente" abaixo) em vez de criar uma pasta nova. Ao migrar com um nome diferente do original,
+adicione uma linha nessa tabela no mesmo PR.
+
 ### 1. Crie a Branch
 
 ```bash
